@@ -26,7 +26,7 @@ Présentation globale en une phrase.
 
 ## Cahier des charges
 
-Pour un exmeple de ce qui est attenu, voir https://gitlab.unistra.fr/T234/t4-exemple
+Pour un exemple de ce qui est attenu, voir https://gitlab.unistra.fr/T234/t4-exemple
 
 ### Objectifs pédagogiques
 
