@@ -16,6 +16,35 @@
     }
 
     .card-header {
-        @apply w-full p-4 bg-darkBlue text-cream text-center text-lg font-semibold;
+        @apply w-full p-2 bg-darkBlue text-cream text-center text-lg font-semibold;
+    }
+
+    .card.front {
+        @apply   text-white rounded-xl shadow-lg;
+    }
+
+
+    .card.front .date {
+        @apply bg-darkRed w-[98%] text-center rounded-xl text-sm font-medium py-2;
+    }
+
+    .card.front .titre {
+        @apply w-[92%] bg-darkBlue text-center  rounded-xl py-2 ;
+    }
+
+    .card.front .titre h3 {
+        @apply text-sm font-bold ;
+    }
+
+    .card.front .titre hr {
+        @apply border-lightRed w-15 my-1 mx-auto ;
+    }
+
+    .card.front .titre .type {
+        @apply text-xs;
+    }
+
+    .card.front .description {
+        @apply w-[92%] bg-cream text-darkBlue rounded-xl text-xs text-center shadow-inner flex-grow flex items-center justify-center ;
     }
 }
