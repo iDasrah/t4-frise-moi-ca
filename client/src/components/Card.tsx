@@ -1,20 +1,29 @@
 import {useState} from "react";
 import FrontCard from "./FrontCard.tsx";
 import BackCard from "./BackCard.tsx";
+import {CardData} from "../types.ts";
+import {CardSide} from "../types.ts";
 
-const Card = () => {
-    const [side, setSide] = useState('front')
+interface CardProps {
+    data: CardData;
+    initialSide: CardSide;
+    turnable?: boolean;
+}
+
+const Card = ({ data, initialSide, turnable } : CardProps) => {
+    const [side, setSide] = useState<CardSide>(initialSide)
 
     const handleClick = () => {
-        setSide((prevSide) => (prevSide === 'front' ? 'back' : 'front'))
+        if (!turnable) return
+        setSide((prevSide) => (prevSide === CardSide.FRONT ? CardSide.BACK : CardSide.FRONT))
     }
 
     return (
         <>
-            {side === 'front' ? (
-                <FrontCard onClick={handleClick} />
+            {side === CardSide.FRONT ? (
+                <FrontCard onClick={handleClick} data={data} />
             ) : (
-                <BackCard onClick={handleClick} />
+                <BackCard onClick={handleClick} data={data} />
             )}
         </>
     )
