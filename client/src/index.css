@@ -1,11 +1,21 @@
 @import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
 @tailwind utilities;
+
+@theme{
+    --color-cream: #EDF2F4;
+    --color-darkRed: #D90429;
+    --color-darkBlue: #2B2D42;
+    --color-lightRed: #EF233C;
+    --color-lightBlue: #8D99AE;
+}
 
 @layer components {
     .card {
-        @apply flex flex-col justify-between items-center bg-white rounded-xl shadow-md p-4 w-60 h-80;
+        @apply flex flex-col justify-between items-center rounded-2xl shadow-md w-60 h-80 bg-lightBlue overflow-hidden cursor-pointer;
+    }
+
+    .card-header {
+        @apply w-full p-4 bg-darkBlue text-cream text-center text-lg font-semibold;
     }
 }
