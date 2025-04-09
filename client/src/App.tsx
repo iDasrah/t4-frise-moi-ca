@@ -1,6 +1,10 @@
+import Card from "./components/Card.tsx";
+
 const App = () => {
     return (
-        <div>App</div>
+        <>
+            <Card />
+        </>
     )
 }
 export default App
