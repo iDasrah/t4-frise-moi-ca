@@ -1,9 +1,10 @@
-import Card from "./components/Card.tsx";
+import Pick from "./components/Pick.tsx";
+import data from "./data.tsx";
 
 const App = () => {
     return (
         <>
-            <Card />
+            <Pick data={data} />
         </>
     )
 }
