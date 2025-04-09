@@ -5,3 +5,8 @@ export type CardData = {
     description: string;
     date: string;
 }
+
+export enum CardSide {
+    FRONT = 'front',
+    BACK = 'back',
+}

@@ -2,11 +2,7 @@ import {useState} from "react";
 import FrontCard from "./FrontCard.tsx";
 import BackCard from "./BackCard.tsx";
 import {CardData} from "../types.ts";
-
-enum CardSide {
-    FRONT = 'front',
-    BACK = 'back',
-}
+import {CardSide} from "../types.ts";
 
 interface CardProps {
     data: CardData;
@@ -22,7 +18,7 @@ const Card = ({ data, initialSide } : CardProps) => {
 
     return (
         <>
-            {side === 'front' ? (
+            {side === CardSide.FRONT ? (
                 <FrontCard onClick={handleClick} data={data} />
             ) : (
                 <BackCard onClick={handleClick} data={data} />
