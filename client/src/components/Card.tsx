@@ -7,12 +7,14 @@ import {CardSide} from "../types.ts";
 interface CardProps {
     data: CardData;
     initialSide: CardSide;
+    turnable?: boolean;
 }
 
-const Card = ({ data, initialSide } : CardProps) => {
+const Card = ({ data, initialSide, turnable } : CardProps) => {
     const [side, setSide] = useState<CardSide>(initialSide)
 
     const handleClick = () => {
+        if (!turnable) return
         setSide((prevSide) => (prevSide === CardSide.FRONT ? CardSide.BACK : CardSide.FRONT))
     }
 

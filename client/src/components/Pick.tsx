@@ -1,19 +1,19 @@
 import Card from "./Card.tsx";
-import { CardSide } from "../types.ts";
+import {CardData, CardSide} from "../types.ts";
 import {useState} from "react";
 
-const data = {
-    title: "Card Title",
-    type: "Card Type",
-    thematic: "Thematic",
-    description: "Card Description",
-    date: "2023-10-01",
+interface PickProps {
+    data: CardData[];
 }
 
-export default function Pick() {
-    const [cards, setCards] = useState();
+export default function Pick({ data } : PickProps) {
+    const [cardsData, setCardsData] = useState<CardData[]>(data);
 
     return <>
-        <Card data={data} initialSide={CardSide.BACK} />
+        <div className="flex flex-col items-center justify-center h-screen">
+                {cardsData[0] && (
+                    <Card data={cardsData[0]} initialSide={CardSide.BACK} turnable={false} />
+                )}
+        </div>
     </>
 }
