@@ -1,8 +1,11 @@
+import {CardData} from "../types.ts";
+
 interface FrontCardProps {
     onClick: () => void;
+    data: CardData;
 }
 
-const FrontCard = ({ onClick } : FrontCardProps) => {
+const FrontCard = ({ onClick, data } : FrontCardProps) => {
     return (
         <>
             <div className="card front" onClick={onClick}>
