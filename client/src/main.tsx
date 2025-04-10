@@ -9,6 +9,7 @@ import { cardsData, playersData } from "./data.ts";
 import CreateGame from "./components/CreateGame.tsx";
 import JoinGame from "./components/JoinGame.tsx";
 import {EndScreen} from "./routes/end-screen.tsx";
+import {Rules} from "./routes/rules.tsx";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/waiting-room/:game_code" element={<WaitingRoom />} />
           <Route path="/game/:game_code" element={<Game playersData={playersData} cardsData={cardsData} />}/>
           <Route path="/end-screen/:game_code" element={<EndScreen playersData={playersData}/>}/>
+          <Route path="/rules" element={<Rules/>}/>
       </Routes>
     </BrowserRouter>
   </StrictMode>,
