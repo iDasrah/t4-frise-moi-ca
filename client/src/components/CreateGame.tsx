@@ -5,7 +5,7 @@ import {useNavigate} from "react-router";
 
 const CreateGame = () => {
     const [username, setUsername] = useState('');
-    const [maxPlayers, setMaxPlayers] = useState(0);
+    const [maxPlayers, setMaxPlayers] = useState(2);
     const navigate = useNavigate();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
