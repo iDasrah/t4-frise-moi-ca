@@ -67,44 +67,44 @@ export const cardsData = [
 
 export const playersData = [
     {
-        name: "Player 1",
+        name: "neuille",
         points: 1,
     }
     ,
     {
-        name: "Player 2",
+        name: "Seb",
         points: 2,
     },
     {
-        name: "Player 3",
+        name: "Lukas",
         points: 3,
     },
     {
-        name: "Player 4",
+        name: "Lucas",
         points: 4,
     },
     {
-        name: "Player 5",
+        name: "Jules",
         points: 5,
     },
     {
-        name: "Player 6",
+        name: "Léo",
         points: 6,
     },
     {
-        name: "Player 7",
+        name: "Mathéo",
         points: 7,
     },
     {
-        name: "Player 8",
+        name: "Maxime",
         points: 8,
     },
     {
-        name: "Player 9",
+        name: "Lucien",
         points: 9,
     },
     {
-        name: "Player 10",
-        points: 10,
+        name: "Baptiste",
+        points: 15,
     },
 ];
