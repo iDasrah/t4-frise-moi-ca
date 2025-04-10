@@ -7,6 +7,7 @@ export function activate(id: string, name: string, gameCode: string, isHost: boo
         name,
         gameCode,
         isHost,
+        isActive: isHost,
         points: 0
     };
     UsersState.setUsers([
@@ -36,7 +37,7 @@ export function getAll() {
     return UsersState.users;
 }
 
-export function updateOne(id: string, data: Partial<{ name: string, isHost: boolean, points: number }>) {
+export function updateOne(id: string, data: Partial<{ name: string, isHost: boolean, isActive: boolean, points: number }>) {
     UsersState.setUsers(UsersState.users.map(user => {
         if (user.id === id) {
             return {
