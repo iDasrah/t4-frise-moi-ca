@@ -1,5 +1,5 @@
 import {useParams} from "react-router";
-import { CardData } from "../types.ts";
+import {CardData} from "../types.ts";
 import GameBoard from "../components/GameBoard.tsx";
 
 interface GameProps {
@@ -11,7 +11,9 @@ const Game = ({ data }: GameProps) => {
 
     return (
         <div>
-            <GameBoard data={data} />
+            {gameId && (
+                <GameBoard data={data} gameId={gameId} />
+            )}
         </div>
     )
 }
