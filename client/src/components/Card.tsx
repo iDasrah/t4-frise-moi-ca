@@ -1,8 +1,7 @@
-import {useState} from "react";
+import { useState } from "react";
 import FrontCard from "./FrontCard.tsx";
 import BackCard from "./BackCard.tsx";
-import {CardData} from "../types.ts";
-import {CardSide} from "../types.ts";
+import { CardData, CardSide } from "../types.ts";
 
 interface CardProps {
     data: CardData;
@@ -10,22 +9,42 @@ interface CardProps {
     turnable?: boolean;
 }
 
-const Card = ({ data, initialSide, turnable } : CardProps) => {
-    const [side, setSide] = useState<CardSide>(initialSide)
+const Card = ({ data, initialSide, turnable }: CardProps) => {
+    const [side, setSide] = useState<CardSide>(initialSide);
+    const [isFlipping, setIsFlipping] = useState(false);
+    const [rotation, setRotation] = useState(0);
 
     const handleClick = () => {
-        if (!turnable) return
-        setSide((prevSide) => (prevSide === CardSide.FRONT ? CardSide.BACK : CardSide.FRONT))
-    }
+        if (!turnable || isFlipping) return;
+
+        setIsFlipping(true);
+        setRotation(prev => prev + 540);
+
+        setTimeout(() => {
+            setSide(prev =>
+                prev === CardSide.FRONT ? CardSide.BACK : CardSide.FRONT
+            );
+            setIsFlipping(false);
+        }, 700);
+    };
 
     return (
-        <>
-            {side === CardSide.FRONT ? (
-                <FrontCard onClick={handleClick} data={data} />
-            ) : (
-                <BackCard onClick={handleClick} data={data} />
-            )}
-        </>
-    )
-}
-export default Card
+        <div className="w-50 h-70 perspective-distant">
+            <div
+                className="relative w-full h-full transition-transform duration-1000 transform-3d"
+                style={{
+                    transform: `rotateY(${rotation}deg)`,
+                }}
+                onClick={handleClick}
+            >
+                {side === CardSide.FRONT ? (
+                    <FrontCard data={data} onClick={handleClick} />
+                ) : (
+                    <BackCard data={data} onClick={handleClick} />
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default Card;

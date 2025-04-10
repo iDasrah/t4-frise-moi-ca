@@ -1,4 +1,5 @@
 export type CardData = {
+    id: number;
     title: string;
     type: string;
     thematic: string;
@@ -23,4 +24,10 @@ export type Game = {
     code: string;
     hasStarted: boolean;
     maxPlayers: number;
+}
+
+export type PlayerData = {
+    points: number;
+    name: string;
+    card?: CardData | null;
 }
