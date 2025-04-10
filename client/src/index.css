@@ -45,4 +45,12 @@
 
 
 
+
+    .input-field {
+        @apply w-[80%] bg-gray-400 p-2 border-1 border-darkBlue rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400;
+    }
+
+    .game-form {
+        @apply h-[85vh] text-white flex flex-col items-center justify-center gap-4 w-full bg-darkBlue border-l-1 border-l-white p-4;
+    }
 }
