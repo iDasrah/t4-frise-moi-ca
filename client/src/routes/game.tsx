@@ -1,19 +1,15 @@
-import {useParams} from "react-router";
-import {CardData} from "../types.ts";
+import {CardData, PlayerData} from "../types.ts";
 import GameBoard from "../components/GameBoard.tsx";
 
 interface GameProps {
-    data: CardData[];
+    cardsData: CardData[];
+    playersData: PlayerData[];
 }
 
-const Game = ({ data }: GameProps) => {
-    const { game_id: gameId } = useParams<{ game_id: string }>();
-
+const Game = ({ cardsData, playersData }: GameProps) => {
     return (
         <div>
-            {gameId && (
-                <GameBoard data={data} gameId={gameId} />
-            )}
+                <GameBoard cardsData={cardsData} playersData={playersData} />
         </div>
     )
 }

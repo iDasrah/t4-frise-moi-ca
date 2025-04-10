@@ -1,4 +1,4 @@
-const data = [
+export const cardsData = [
     {
         title: "Card Title",
         type: "Card Type",
@@ -57,4 +57,36 @@ const data = [
     },
 ];
 
-export default data;
+export const playersData = [
+    {
+        name: "Player 1",
+    }
+    ,
+    {
+        name: "Player 2",
+    },
+    {
+        name: "Player 3",
+    },
+    {
+        name: "Player 4",
+    },
+    {
+        name: "Player 5",
+    },
+    {
+        name: "Player 6",
+    },
+    {
+        name: "Player 7",
+    },
+    {
+        name: "Player 8",
+    },
+    {
+        name: "Player 9",
+    },
+    {
+        name: "Player 10",
+    },
+];

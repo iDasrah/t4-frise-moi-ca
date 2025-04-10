@@ -10,3 +10,7 @@ export enum CardSide {
     FRONT = 'front',
     BACK = 'back',
 }
+
+export type PlayerData = {
+    name: string;
+}
