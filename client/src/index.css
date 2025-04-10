@@ -4,26 +4,41 @@
 
 @theme{
     --color-cream: #EDF2F4;
+    --color-cream2: #bebbbb;
     --color-darkRed: #D90429;
     --color-darkBlue: #2B2D42;
     --color-lightRed: #EF233C;
-    --color-lightBlue: #8D99AE;
+    --color-lightBlue: #4C5075;
+    --color-mainBlue: #474B6D;
+    --color-gray: #AEAEAE;
 }
 
 @layer components {
     .card {
-        @apply flex flex-col justify-between items-center rounded-2xl shadow-md w-60 h-80 bg-lightBlue text-white overflow-hidden cursor-pointer;
+        @apply flex flex-col justify-between items-center rounded-2xl shadow-md w-full h-full bg-lightBlue text-white overflow-hidden cursor-pointer;
     }
 
     .card-header {
-        @apply w-full p-2 bg-darkBlue text-cream text-center text-lg font-semibold;
+        @apply w-full p-2 bg-darkBlue text-cream text-center text-lg font-semibold
     }
 
     .btn {
-        @apply font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out;
+        @apply font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out cursor-pointer;
+    }
+
+    .btn-danger {
+        @apply bg-red-400 text-cream hover:bg-red-500;
     }
 
     .btn-primary {
         @apply bg-blue-400 text-cream hover:bg-blue-500;
+    }
+
+    .input-field {
+        @apply w-[80%] bg-gray-400 p-2 border-1 border-darkBlue rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400;
+    }
+
+    .game-form {
+        @apply h-[85vh] text-white flex flex-col items-center justify-center gap-4 w-full bg-darkBlue border-l-1 border-l-white p-4;
     }
 }

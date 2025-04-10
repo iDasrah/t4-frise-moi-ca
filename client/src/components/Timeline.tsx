@@ -10,10 +10,10 @@ const Timeline = ({ data }: TimelineProps) => {
     const [cards, setCards] = useState<CardData[]>(data)
 
     return <>
-        <div className="flex flex-col items-center justify-center h-screen">
-            <div className="flex">
-                {cards.map((card, index) => (
-                    <Card key={index} data={card} initialSide={CardSide.BACK} turnable={false} />
+        <div className="flex flex-col items-center justify-center ">
+            <div className="flex gap-5 flex-wrap overflow-hidden p-3 border-2 border-black rounded-xl bg-cream" >
+                {cards.slice(0,5).map((card, index) => (
+                    <Card key={index} data={card} initialSide={CardSide.FRONT} turnable={false} />
                 ))}
             </div>
         </div>

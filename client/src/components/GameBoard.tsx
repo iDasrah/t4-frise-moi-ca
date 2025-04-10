@@ -1,17 +1,28 @@
 import Pick from "./Pick.tsx";
-import {CardData} from "../types.ts";
+import {CardData, CardSide, PlayerData} from "../types.ts";
 import Timeline from "./Timeline.tsx";
+import { Link } from "react-router";
+import Player from "./Player.tsx";
+import Card from "./Card.tsx";
 
 interface GameBoardProps {
-    data: CardData[];
+     cardsData: CardData[];
+     playersData : PlayerData[];
 }
 
-const GameBoard = ({ data }: GameBoardProps) => {
+const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
     return (
         <>
-            <Pick data={data} />
-            <Timeline data={data} />
+            <div className="bg-mainBlue h-screen text-white pt-5 flex flex-col gap-5">
+                <div>
+                    <Pick data={cardsData} />
+                </div>
+                <div>
+                    <Timeline data={cardsData} />
+                </div>
+                <Link to="/" className="btn btn-danger absolute bottom-5 left-5">Quitter</Link>
+            </div>
         </>
-    )
-}
-export default GameBoard
+    );
+};
+export default GameBoard;
