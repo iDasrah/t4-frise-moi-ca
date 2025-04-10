@@ -11,32 +11,37 @@ interface CardProps {
 
 const Card = ({ data, initialSide, turnable }: CardProps) => {
     const [side, setSide] = useState<CardSide>(initialSide);
-    const [rotation, setRotation] = useState(initialSide === CardSide.BACK ? 180 : 0);
+    const [isFlipping, setIsFlipping] = useState(false);
+    const [rotation, setRotation] = useState(0);
 
     const handleClick = () => {
-        if (!turnable) return;
-        setSide((prev) =>
-            prev === CardSide.FRONT ? CardSide.BACK : CardSide.FRONT
-        );
-        setRotation((prev) => prev + 540);
+        if (!turnable || isFlipping) return;
+
+        setIsFlipping(true);
+        setRotation(prev => prev + 540);
+
+        setTimeout(() => {
+            setSide(prev =>
+                prev === CardSide.FRONT ? CardSide.BACK : CardSide.FRONT
+            );
+            setIsFlipping(false);
+        }, 700);
     };
 
     return (
-        <div className="w-60 h-70 perspective ">
+        <div className="w-60 h-70 perspective-distant">
             <div
-                className="relative w-full h-full transition-transform duration-1000 transform-style preserve-3d"
+                className="relative w-full h-full transition-transform duration-1000 transform-3d"
                 style={{
                     transform: `rotateY(${rotation}deg)`,
                 }}
                 onClick={handleClick}
             >
-                <div className="absolute w-full h-full backface-hidden z-[3]">
-                    <BackCard onClick={handleClick} data={data} />
-                </div>
-
-                <div className="absolute w-full h-full backface-hidden rotate-y-180 z-[1]">
-                    <FrontCard  onClick={handleClick} data={data} />
-                </div>
+                {side === CardSide.FRONT ? (
+                    <FrontCard data={data} onClick={handleClick} />
+                ) : (
+                    <BackCard data={data} onClick={handleClick} />
+                )}
             </div>
         </div>
     );

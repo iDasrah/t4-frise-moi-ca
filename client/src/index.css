@@ -32,22 +32,6 @@
         @apply bg-red-400 text-cream hover:bg-red-500;
     }
 
-    .perspective {
-        perspective: 1200px;
-    }
-
-    .transform-style {
-        transform-style: preserve-3d;
-    }
-
-    .backface-hidden {
-        backface-visibility: hidden;
-    }
-
-    .rotate-y-180 {
-        transform: rotateY(180deg);
-    }
-
     .input-field {
         @apply w-[80%] bg-gray-400 p-2 border-1 border-darkBlue rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400;
     }
