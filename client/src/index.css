@@ -8,11 +8,12 @@
     --color-darkBlue: #2B2D42;
     --color-lightRed: #EF233C;
     --color-lightBlue: #8D99AE;
+    --color-mainBlue: #474B6D;
 }
 
 @layer components {
     .card {
-        @apply flex flex-col justify-between items-center rounded-2xl shadow-md w-60 h-80 bg-lightBlue text-white overflow-hidden cursor-pointer;
+        @apply flex flex-col justify-between items-center rounded-2xl shadow-md w-30 h-40 bg-lightBlue text-white overflow-hidden cursor-pointer;
     }
 
     .card-header {
@@ -47,10 +48,10 @@
 
 
     .input-field {
-        @apply w-[80%] bg-gray-400 p-2 border-1 border-darkBlue rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400;
+        @apply w-[80%] bg-gray-400 p-2 border-1 bg-mainBlue rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400;
     }
 
     .game-form {
-        @apply h-[85vh] text-white flex flex-col items-center justify-center gap-4 w-full bg-darkBlue border-l-1 border-l-white p-4;
+        @apply h-[85vh] text-white flex flex-col items-center justify-center gap-4 w-full bg-mainBlue border-l-1 border-l-white p-4;
     }
 }

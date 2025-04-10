@@ -11,18 +11,19 @@ interface GameBoardProps {
 const GameBoard = ({ data, gameId }: GameBoardProps) => {
     return (
         <>
-            <div className="bg-darkBlue h-screen text-white">
-                <div className="mt-5 mb-5">
+            <div className="bg-mainBlue h-screen text-white pt-5 flex flex-col justify-between gap-5">
+                <div>
                     <Pick data={data} />
                 </div>
-                <Timeline data={data} />
+                <div>
+                    <Timeline data={data} />
+                </div>
                 <div className="ml-2 text-3xl">
-                    <p>Code room :</p>
-                    <p>#{gameId}</p>
-                    <Link to="/" className="btn bg-">Leave</Link>
+                    <p>Code room : #{gameId}</p>
+                    <Link to="/" className="btn text-red-500 hover:text-red-700 p-0">Leave</Link>
                 </div>
             </div>
         </>
     );
-}
-export default GameBoard
+};
+export default GameBoard;
