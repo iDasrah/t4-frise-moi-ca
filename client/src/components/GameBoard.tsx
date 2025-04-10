@@ -14,11 +14,9 @@ const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
     return (
         <>
             <div className="bg-mainBlue h-screen text-white pt-5 flex flex-col gap-5">
-                <div>
+                <Timeline data={cardsData} />
+                <div className="self-end">
                     <Pick data={cardsData} />
-                </div>
-                <div>
-                    <Timeline data={cardsData} />
                 </div>
                 <Link to="/" className="btn btn-danger absolute bottom-5 left-5">Quitter</Link>
             </div>

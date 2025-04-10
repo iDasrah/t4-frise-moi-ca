@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {CardData, CardSide} from "../types.ts";
 import Card from "./Card.tsx";
+import {DndContext} from "@dnd-kit/core";
 
 interface TimelineProps {
     data: CardData[];
@@ -11,10 +12,9 @@ const Timeline = ({ data }: TimelineProps) => {
 
     return <>
         <div className="flex flex-col items-center justify-center ">
-            <div className="flex gap-5 flex-wrap overflow-hidden p-3 border-2 border-black rounded-xl bg-cream" >
-                {cards.slice(0,5).map((card, index) => (
-                    <Card key={index} data={card} initialSide={CardSide.FRONT} turnable={false} />
-                ))}
+            <div className="w-[80%] h-60 flex gap-5 flex-wrap overflow-hidden p-3 border-2 border-black rounded-xl bg-cream" >
+                <DndContext>
+                </DndContext>
             </div>
         </div>
     </>
