@@ -11,7 +11,9 @@ const Game = ({ data }: GameProps) => {
 
     return (
         <div>
-            <GameBoard data={data}/>
+            {gameId && (
+                <GameBoard data={data} gameId={gameId} />
+            )}
         </div>
     )
 }
