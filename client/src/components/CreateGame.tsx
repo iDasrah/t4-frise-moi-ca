@@ -27,7 +27,7 @@ const CreateGame = () => {
             return () => {
                 socket.off('createGame');
             };
-        }
+        }, []
     );
 
     return (
