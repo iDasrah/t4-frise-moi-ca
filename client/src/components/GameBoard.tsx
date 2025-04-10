@@ -1,5 +1,5 @@
 import Pick from "./Pick.tsx";
-import { CardData, PlayerData } from "../types.ts";
+import {CardData, PlayerData} from "../types.ts";
 import Timeline from "./Timeline.tsx";
 import { Link } from "react-router";
 
@@ -7,7 +7,6 @@ interface GameBoardProps {
     cardsData: CardData[];
     playersData: PlayerData[];
 }
-
 
 const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
     return (
@@ -39,6 +38,7 @@ const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
                     </div>
                     <div className="w-60 h-85 bg-white/10 border border-white rounded-md mt-2"></div>
                 </div>
+                <Link to="/" className="btn btn-danger absolute bottom-5 left-5">Quitter</Link>
             </div>
 
 
@@ -54,5 +54,4 @@ const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
         </div>
     );
 };
-
 export default GameBoard;

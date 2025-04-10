@@ -5,7 +5,7 @@ interface BackCardProps {
     data?: Omit<CardData, "type" | "description" | "date">;
 }
 
-const BackCard = ({ onClick, data }: BackCardProps) => {
+const BackCard = ({ data }: BackCardProps) => {
     return (
         <div
             className="card back w-full h-full rounded-lg overflow-hidden cursor-pointer"

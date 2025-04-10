@@ -1,9 +1,14 @@
+import Card from "./Card.tsx";
+import {CardData,  PlayerData} from "../types.ts";
+import {useState} from "react";
+import { cardsData } from "../data.ts";
 
     interface PlayerProps {
         data: PlayerData;
     }
 
-    export default function Player({ data }: PlayerProps) {
+export default function Player({ data } : PlayerProps) {
+    const [cardData] = useState<CardData>(cardsData[0]);
 
 
         return (
