@@ -13,7 +13,7 @@ const Timeline = ({ data }: TimelineProps) => {
         <div className="flex flex-col items-center justify-center ">
             <div className="flex gap-5 flex-wrap overflow-hidden p-3 border-2 border-black rounded-xl bg-cream" >
                 {cards.slice(0,5).map((card, index) => (
-                    <Card key={index} data={card} initialSide={CardSide.FRONT} turnable={true} />
+                    <Card key={index} data={card} initialSide={CardSide.FRONT} turnable={false} />
                 ))}
             </div>
         </div>

@@ -13,26 +13,14 @@ interface GameBoardProps {
 const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
     return (
         <>
-            <div className="bg-mainBlue h-screen text-white pt-5 flex flex-col justify-between gap-5">
-                <div className="flex items-center justify-around">
-                    {playersData.map((player) => (
-                        <Player data={player}/>
-                    ))}
-                </div>
+            <div className="bg-mainBlue h-screen text-white pt-5 flex flex-col gap-5">
                 <div>
                     <Pick data={cardsData} />
                 </div>
                 <div>
                     <Timeline data={cardsData} />
                 </div>
-                <div className="flex">
-                    <div className="ml-2 text-3xl">
-                        <Link to="/" className="btn text-red-500 hover:text-red-700 p-0">Leave</Link>
-                    </div>
-                    <div className="flex items-center justify-around">
-                        <Player data={playersData[0]}/>
-                    </div>
-                </div>
+                <Link to="/" className="btn btn-danger absolute bottom-5 left-5">Quitter</Link>
             </div>
         </>
     );
