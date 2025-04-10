@@ -1,26 +1,40 @@
 import Pick from "./Pick.tsx";
-import {CardData} from "../types.ts";
+import {CardData, CardSide, PlayerData} from "../types.ts";
 import Timeline from "./Timeline.tsx";
 import { Link } from "react-router";
+import Player from "./Player.tsx";
+import Card from "./Card.tsx";
 
 interface GameBoardProps {
-    data: CardData[];
+     cardsData: CardData[];
+     playersData : PlayerData[];
 }
-const GameBoard = ({ data }: GameBoardProps) => {
+
+const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
     return (
-        <div className="bg-mainBlue h-screen text-white flex flex-col justify-between">
-            <div className="flex flex-col items-center justify-center flex-grow gap-5">
-                <div>
-                    <Pick data={data} />
+        <>
+            <div className="bg-mainBlue h-screen text-white pt-5 flex flex-col justify-between gap-5">
+                <div className="flex items-center justify-around">
+                    {playersData.map((player) => (
+                        <Player data={player}/>
+                    ))}
                 </div>
                 <div>
-                    <Timeline data={data} />
+                    <Pick data={cardsData} />
+                </div>
+                <div>
+                    <Timeline data={cardsData} />
+                </div>
+                <div className="flex">
+                    <div className="ml-2 text-3xl">
+                        <Link to="/" className="btn text-red-500 hover:text-red-700 p-0">Leave</Link>
+                    </div>
+                    <div className="flex items-center justify-around">
+                        <Player data={playersData[0]}/>
+                    </div>
                 </div>
             </div>
-            <div className="absolute bottom-5 left-5 text-3xl">
-                <Link to="/" className="btn text-red-500 hover:text-red-700 p-0">Leave</Link>
-            </div>
-        </div>
+        </>
     );
 };
 export default GameBoard;

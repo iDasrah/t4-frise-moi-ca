@@ -5,7 +5,7 @@ import {BrowserRouter, Route, Routes} from "react-router";
 import Home from "./routes/home.tsx";
 import Game from "./routes/game.tsx";
 import WaitingRoom from "./routes/waiting-room.tsx";
-import data from "./data.ts";
+import { cardsData, playersData } from "./data.ts";
 import CreateGame from "./components/CreateGame.tsx";
 import JoinGame from "./components/JoinGame.tsx";
 

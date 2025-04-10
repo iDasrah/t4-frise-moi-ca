@@ -24,3 +24,7 @@ export type Game = {
     hasStarted: boolean;
     maxPlayers: number;
 }
+
+export type PlayerData = {
+    name: string;
+}
