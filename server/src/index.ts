@@ -63,13 +63,15 @@ io.on('connection', socket => {
     }
     user.activate(socket.id, username, gameCode);
     socket.join(gameCode);
-    socket.to(gameCode).emit('joinGame', {
+    socket.emit('joinGame', {
+      error: false,
+      gameCode
+    });
+    socket.to(gameCode).emit('newUser', {
       error: false,
       message: `${username} has joined the game`
     });
-    io.to(gameCode).emit('usersInGame', {
-        users: user.getAllInGame(gameCode)
-    });
+    io.to(gameCode).emit('usersInGame', user.getAllInGame(gameCode));
   })
 
   socket.on('createGame', async ({ username, maxPlayers }: { username: string, maxPlayers: number }) => {
@@ -151,9 +153,21 @@ io.on('connection', socket => {
     const existingUser = user.getOne(socket.id);
     if (!existingUser) return;
 
-    socket.emit('usersInGame', {
-      users: user.getAllInGame(existingUser.gameCode)
-    });
+    socket.emit('usersInGame', user.getAllInGame(existingUser.gameCode));
+  })
+
+  socket.on('game', () => {
+    const existingGame = user.getGame(socket.id);
+    if (!existingGame) return;
+
+    socket.emit('game', existingGame);
+  })
+
+  socket.on('user', () => {
+    const existingUser = user.getOne(socket.id);
+    if (!existingUser) return;
+
+    socket.emit('user', existingUser);
   })
 
   socket.on('disconnect', () => {
@@ -179,9 +193,7 @@ io.on('connection', socket => {
       }
     }
 
-    io.to(existingUser.gameCode).emit('usersInGame', {
-      users: user.getAllInGame(existingUser.gameCode)
-    })
+    io.to(existingUser.gameCode).emit('usersInGame', user.getAllInGame(existingUser.gameCode))
 
     console.log(`User ${socket.id} disconnected`)
   })

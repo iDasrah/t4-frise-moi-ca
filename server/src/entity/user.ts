@@ -47,3 +47,11 @@ export function updateOne(id: string, data: Partial<{ name: string, isHost: bool
         return user;
     }));
 }
+
+export function getGame(id: string) {
+    const user = getOne(id);
+    if (user) {
+        return game.getOne(user.gameCode);
+    }
+    return null;
+}

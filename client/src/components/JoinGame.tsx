@@ -1,20 +1,35 @@
-import {useState} from "react";
-import * as React from "react";
+import {FormEvent, useEffect, useState} from "react";
+import {socket} from "../socket.ts";
+import {useNavigate} from "react-router";
 
 const JoinGame = () => {
     const [username, setUsername] = useState('')
-    const [gameId, setGameId] = useState('')
+    const [gameCode, setGameCode] = useState('')
+    const navigate = useNavigate();
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const gameData = {
-            username: username,
-            gameId: gameId
-        };
-
-        console.log(gameData);
+        socket.emit('joinGame', {
+            username,
+            gameCode
+        });
     }
+
+    useEffect(() => {
+            socket.on('joinGame', (data) => {
+                if (data.error) {
+                    alert(data.message);
+                    return;
+                }
+                navigate(`/waiting-room/${data.gameCode}`);
+            })
+
+            return () => {
+                socket.off('joinGame');
+            };
+        }
+    );
 
     return (
         <>
@@ -28,8 +43,8 @@ const JoinGame = () => {
                 />
                 <label htmlFor="nb_players">Code de la partie</label>
                 <input className="input-field" type="text" name="gameId" id="gameId"
-                       value={gameId}
-                       onChange={(e) => setGameId(e.target.value)}
+                       value={gameCode}
+                       onChange={(e) => setGameCode(e.target.value)}
                        min={2}
                        max={10}
                 />
