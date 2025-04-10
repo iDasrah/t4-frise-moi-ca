@@ -7,14 +7,12 @@
   - lien 2
   - ...
 
-
 ## Instructions de fork :
 
 - forker ce dépôt
 - le nommer du code complet du groupe T4
 - ajouter le lien dans le doc des groupes
 - supprimer les instructions de fork du README.md
-
 
 ## Présentation du projet
 
@@ -41,10 +39,8 @@ Pour un exemple de ce qui est attendu, voir https://gitlab.unistra.fr/T234/t4-ex
 ##### Identifier les enjeux politiques et sociaux liés aux services publics
 - Certains services publics apparaissent dans des contextes de crise ou de réforme : le joueur en découvre les causes et les conséquences.
 
-#### Replacer l’histoire dans le débat public contemporain
+##### Replacer l’histoire dans le débat public contemporain
 - À travers le jeu, on peut questionner les débats actuels autour du rôle de l’État en se fondant sur l’histoire de la construction des services publics.
-
-Pareil, mais qui nécessite plus de développement.
 
 #### Références
 
@@ -55,7 +51,7 @@ Pareil, mais qui nécessite plus de développement.
 Une carte est tirée au sort et posée dans la frise centrale.
 Une carte est tirée au sort et posée dans la frise centrale. Elle sert de point de départ.
 Chaque joueur à tour de rôle :
-pioche une carte décrivant une étape historique, mais sans voir sa date
+* pioche une carte décrivant une étape historique, mais sans voir sa date
 * dispose cette carte dans la frise centrale (à gauche, à droite, ou entre deux cartes déjà posées)
 * si la carte est à la bonne place (la chronologie est respectée), le joueur marque un point
 * sinon, la carte est déplacée à la bonne place et le joueur ne marque aucun point
