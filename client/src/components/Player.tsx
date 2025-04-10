@@ -8,7 +8,7 @@ interface PlayerProps {
 }
 
 export default function Player({ data } : PlayerProps) {
-    const [cardData, setCard] = useState<CardData>(cardsData[0]);
+    const [cardData] = useState<CardData>(cardsData[0]);
 
     return <>
         <div className="flex-col items-center justify-center">
