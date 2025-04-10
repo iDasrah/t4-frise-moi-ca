@@ -20,12 +20,16 @@ const server = app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
 
-const io = new Server(server)
+const io = new Server(server, {
+    cors: {
+        origin: '*'
+    }
+})
 
 io.on('connection', socket => {
   console.log(`User ${socket.id} connected`)
 
-  socket.on('joinGame', ({ name, gameCode }: { name: string, gameCode: string }) => {
+  socket.on('joinGame', ({ username, gameCode }: { username: string, gameCode: string }) => {
     const existingUser = user.getOne(socket.id);
     if (existingUser && existingUser.gameCode !== gameCode) {
       socket.emit('joinGame', {
@@ -55,25 +59,28 @@ io.on('connection', socket => {
       });
       return;
     }
-    user.activate(socket.id, name, gameCode);
+    user.activate(socket.id, username, gameCode);
     socket.join(gameCode);
     socket.to(gameCode).emit('joinGame', {
       error: false,
-      message: `${name} has joined the game`
+      message: `${username} has joined the game`
     });
     io.to(gameCode).emit('usersInGame', {
         users: user.getAllInGame(gameCode)
     });
   })
 
-  socket.on('createGame', ({ name, gameCode, maxPlayers }: { name: string, gameCode: string, maxPlayers: number }) => {
-    if (!game.canActivate(gameCode)) {
-      socket.emit('createGame', {
-        error: true,
-        message: 'Game already exists'
-      });
-      return;
+  socket.on('createGame', ({ username, maxPlayers }: { username: string, maxPlayers: number }) => {
+    let gameCode: string;
+
+    while (true) {
+      gameCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+
+      if (game.canActivate(gameCode)) {
+        break;
+      }
     }
+
     if (maxPlayers > 10) {
       socket.emit('createGame', {
         error: true,
@@ -89,14 +96,11 @@ io.on('connection', socket => {
       return;
     }
     game.activate(gameCode, maxPlayers);
-    user.activate(socket.id, name, gameCode, true);
+    user.activate(socket.id, username, gameCode, true);
     socket.join(gameCode);
-    socket.to(gameCode).emit('createGame', {
+    io.to(gameCode).emit('createGame', {
       error: false,
-      message: 'Game created successfully'
-    });
-    io.to(gameCode).emit('usersInGame', {
-      users: user.getAllInGame(gameCode)
+      gameCode
     });
   })
 
@@ -132,6 +136,15 @@ io.on('connection', socket => {
     io.to(existingUser.gameCode).emit('startGame', {
       error: false,
       message: 'Game has started'
+    });
+  })
+
+  socket.on('usersInGame', () => {
+    const existingUser = user.getOne(socket.id);
+    if (!existingUser) return;
+
+    socket.emit('usersInGame', {
+      users: user.getAllInGame(existingUser.gameCode)
     });
   })
 
