@@ -7,14 +7,11 @@ interface PickProps {
 }
 
 export default function Pick({ cardsData, onPick } : PickProps) {
-    const handlePick = () => {
-        onPick();
-    };
 
     return (
         <div className="flex flex-col items-center justify-center">
             <h2 className="text-md mb-2">Pioche</h2>
-            <div onClick={handlePick}>
+            <div onClick={onPick}>
                 <div className="w-51 h-71 bg-white/10 border border-white rounded-md mt-2">
                     {cardsData.length > 0 && (
                             <Card

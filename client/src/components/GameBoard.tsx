@@ -6,6 +6,9 @@ import { CardData, PlayerData } from "../types";
 import { Link } from "react-router";
 import PlayersList from "./PlayersList.tsx";
 import Player from "./Player.tsx";
+import {
+    restrictToWindowEdges
+} from "@dnd-kit/modifiers";
 
 interface GameBoardProps {
     cardsData: CardData[];
@@ -19,9 +22,10 @@ const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
     const [pickCards, setPickCards] = useState<CardData[]>(cardsData);
     const [isDragging, setIsDragging] = useState(false);
     const [currentPlayer, setCurrentPlayer] = useState<PlayerData>(playersData[0]);
+    const [canPick, setCanPick] = useState(true);
 
     const handlePick = () => {
-        if (pickCards.length === 0) return;
+        if (pickCards.length === 0 || !canPick) return;
 
         const picked = pickCards[0];
         setPickedCard(picked);
@@ -33,6 +37,7 @@ const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
             card: picked,
         };
         setCurrentPlayer(updatedPlayer);
+        setCanPick(false);
     };
 
     const handleDragStart = () => {
@@ -62,10 +67,11 @@ const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
             card: null,
         };
         setCurrentPlayer(updatedPlayer);
+        setCanPick(true);
     };
 
     return (
-        <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+        <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd} modifiers={[restrictToWindowEdges]}>
             <div className="bg-mainBlue h-screen text-white pt-5 flex flex-col gap-5 items-center">
                 <PlayersList playersData={playersData} />
                 <Timeline

@@ -9,7 +9,7 @@ interface GameProps {
 const Game = ({ cardsData, playersData }: GameProps) => {
     return (
         <div>
-                <GameBoard cardsData={cardsData} playersData={playersData} />
+            <GameBoard cardsData={cardsData} playersData={playersData} />
         </div>
     )
 }

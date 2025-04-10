@@ -3,6 +3,7 @@ import Card from "./Card";
 import DropSlot from "./DropSlot";
 import {useEffect, useRef, useState} from "react";
 
+
 interface TimelineProps {
     cardsData: CardData[];
     isDragging: boolean;
@@ -10,7 +11,12 @@ interface TimelineProps {
 
 export default function Timeline({ cardsData, isDragging }: TimelineProps) {
     const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
     const [closestIndex, setClosestIndex] = useState<number | null>(null);
+    const shouldShowEndDropSlot =
+        isDragging &&
+        closestIndex !== null &&
+        (closestIndex === cardsData.length || cardsData.length === 0);
 
     const findClosestIndex = () => {
         const draggedEl = document.querySelector('[data-id="picked-card"]') as HTMLElement;
@@ -21,19 +27,22 @@ export default function Timeline({ cardsData, isDragging }: TimelineProps) {
 
         let closest = 0;
         let minDiff = Infinity;
+        let foundCloser = false;
 
         cardRefs.current.forEach((ref, i) => {
             if (!ref) return;
             const rect = ref.getBoundingClientRect();
             const centerX = rect.x + rect.width / 2;
-            const diff = Math.abs(draggedX - centerX);
-            if (diff < minDiff) {
-                minDiff = diff;
+            const diff = draggedX - centerX;
+
+            if (diff < 0 && Math.abs(diff) < minDiff) {
+                minDiff = Math.abs(diff);
                 closest = i;
+                foundCloser = true;
             }
         });
 
-        return closest;
+        return foundCloser ? closest : cardsData.length;
     };
 
     useEffect(() => {
@@ -51,7 +60,7 @@ export default function Timeline({ cardsData, isDragging }: TimelineProps) {
 
     return (
         <div className="w-[95vw] flex flex-col items-center justify-center">
-            <div className="w-full flex gap-5 items-center overflow-hidden p-3 border-2 border-black rounded-xl bg-cream min-h-[180px]">
+            <div className="w-full flex gap-5 items-center overflow-x-scroll p-3 border-2 border-black rounded-xl bg-cream min-h-[180px]">
                 {cardsData.map((card, index) => (
                     <div
                         key={`wrapper-${index}`}
@@ -67,10 +76,8 @@ export default function Timeline({ cardsData, isDragging }: TimelineProps) {
                     </div>
                 ))}
 
-                {isDragging && closestIndex !== null && (
-                    <DropSlot
-                        id={`slot-${cardsData.length}`}
-                    />
+                {shouldShowEndDropSlot && (
+                    <DropSlot id={`slot-${cardsData.length}`} />
                 )}
             </div>
         </div>
