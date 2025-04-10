@@ -13,8 +13,8 @@ export function EndScreen({ playersData }: EndScreenProps) {
     const [displayedPoints, setDisplayedPoints] = useState([0, 0, 0]);
 
     useEffect(() => {
-        const targetHeights = [110, 90, 70];
-        const delays = [2500, 2000, 1500];
+        const targetHeights = [110, 70, 40];
+        const delays = [1500, 1000, 500];
 
         sortedRanking.forEach((player, index) => {
             // Animation de la barre
