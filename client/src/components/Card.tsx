@@ -11,7 +11,7 @@ interface CardProps {
 
 const Card = ({ data, initialSide, turnable }: CardProps) => {
     const [side, setSide] = useState<CardSide>(initialSide);
-    const [rotation, setRotation] = useState(initialSide === CardSide.FRONT ? 180 : 0);
+    const [rotation, setRotation] = useState(initialSide === CardSide.BACK ? 180 : 0);
 
     const handleClick = () => {
         if (!turnable) return;
@@ -22,7 +22,7 @@ const Card = ({ data, initialSide, turnable }: CardProps) => {
     };
 
     return (
-        <div className="w-30 h-40 perspective">
+        <div className="w-60 h-70 perspective ">
             <div
                 className="relative w-full h-full transition-transform duration-1000 transform-style preserve-3d"
                 style={{
@@ -35,7 +35,7 @@ const Card = ({ data, initialSide, turnable }: CardProps) => {
                 </div>
 
                 <div className="absolute w-full h-full backface-hidden rotate-y-180 z-[1]">
-                    <FrontCard onClick={handleClick} data={data} />
+                    <FrontCard  onClick={handleClick} data={data} />
                 </div>
             </div>
         </div>
