@@ -9,13 +9,19 @@ interface GameBoardProps {
 }
 
 const GameBoard = ({ data, gameId }: GameBoardProps) => {
-
     return (
         <>
-            <Pick data={data} />
-            <Timeline data={data} />
-            <p>Code room : #{gameId}</p>
-            <Link to="/" className="btn">Leave</Link>
+            <div className="bg-darkBlue h-screen text-white">
+                <div className="mt-5 mb-5">
+                    <Pick data={data} />
+                </div>
+                <Timeline data={data} />
+                <div className="ml-2 text-3xl">
+                    <p>Code room :</p>
+                    <p>#{gameId}</p>
+                    <Link to="/" className="btn bg-">Leave</Link>
+                </div>
+            </div>
         </>
     );
 }

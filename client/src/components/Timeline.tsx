@@ -11,7 +11,7 @@ const Timeline = ({ data }: TimelineProps) => {
 
     return <>
         <div className="flex flex-col items-center justify-center">
-            <div className="flex">
+            <div className="flex gap-5" >
                 {cards.map((card, index) => (
                     <Card key={index} data={card} initialSide={CardSide.FRONT} turnable={true} />
                 ))}
