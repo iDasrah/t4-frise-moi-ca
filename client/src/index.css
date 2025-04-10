@@ -4,20 +4,22 @@
 
 @theme{
     --color-cream: #EDF2F4;
+    --color-cream2: #bebbbb;
     --color-darkRed: #D90429;
     --color-darkBlue: #2B2D42;
     --color-lightRed: #EF233C;
-    --color-lightBlue: #8D99AE;
+    --color-lightBlue: #4C5075;
     --color-mainBlue: #474B6D;
+    --color-gray: #AEAEAE;
 }
 
 @layer components {
     .card {
-        @apply flex flex-col justify-between items-center rounded-2xl shadow-md w-30 h-40 bg-lightBlue text-white overflow-hidden cursor-pointer;
+        @apply flex flex-col justify-between items-center rounded-2xl shadow-md w-full h-full bg-lightBlue text-white overflow-hidden cursor-pointer;
     }
 
     .card-header {
-        @apply w-full p-2 bg-darkBlue text-cream text-center text-lg font-semibold;
+        @apply w-full p-2 bg-darkBlue text-cream text-center text-lg font-semibold
     }
 
     .btn {
@@ -26,10 +28,6 @@
 
     .btn-primary {
         @apply bg-blue-400 text-cream hover:bg-blue-500;
-    }
-
-    .btn-danger {
-        @apply bg-red-400 text-cream hover:bg-red-500;
     }
 
     .input-field {
