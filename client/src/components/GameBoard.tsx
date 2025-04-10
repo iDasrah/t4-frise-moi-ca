@@ -4,6 +4,8 @@ import Timeline from "./Timeline.tsx";
 import { Link } from "react-router";
 import { useState } from "react";
 
+
+
 interface GameBoardProps {
     cardsData: CardData[];
     playersData: PlayerData[];
@@ -59,12 +61,16 @@ const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
             </div>
 
 
+
+            
+
             <div className="absolute bottom-25 right-105 flex flex-col items-center">
                 <h2 className="text-md mb-2">Pioche</h2>
                 <Pick
                     data={cardsData}
                     onClick={() => {
                         console.log(`${currentPlayer.name} pioche une carte`);
+
                         nextTurn();
                     }}
                     canDraw={true}
