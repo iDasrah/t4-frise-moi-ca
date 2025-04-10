@@ -1,11 +1,13 @@
 import {FormEvent, useEffect, useState} from "react";
 import {socket} from "../socket.ts";
-import {useNavigate} from "react-router";
+import {useNavigate, useSearchParams} from "react-router";
 
 const JoinGame = () => {
     const [username, setUsername] = useState('')
     const [gameCode, setGameCode] = useState('')
     const navigate = useNavigate();
+
+    const [searchParams] = useSearchParams();
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -17,6 +19,11 @@ const JoinGame = () => {
     }
 
     useEffect(() => {
+            const codeParam = searchParams.get('code');
+            if (codeParam) {
+                setGameCode(codeParam.toString());
+            }
+
             socket.on('joinGame', (data) => {
                 if (data.error) {
                     alert(data.message);
@@ -28,7 +35,7 @@ const JoinGame = () => {
             return () => {
                 socket.off('joinGame');
             };
-        }
+        }, [searchParams]
     );
 
     return (
