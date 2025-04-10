@@ -17,7 +17,6 @@ export function EndScreen({ playersData }: EndScreenProps) {
         const delays = [1500, 1000, 500];
 
         sortedRanking.forEach((player, index) => {
-            // Animation de la barre
             setTimeout(() => {
                 setHeights(prev => {
                     const newHeights = [...prev];
@@ -46,7 +45,7 @@ export function EndScreen({ playersData }: EndScreenProps) {
     return (
         <div className="flex flex-col bg-darkBlue text-white items-center justify-around h-screen">
             <div className="flex flex-col items-center">
-                <h2 className="text-2xl font-bold mb-4">Classement des Joueurs</h2>
+                <h2 className="text-2xl font-bold mb-4">Classement des joueurs</h2>
                 <p className="text-sm text-gray-300 mb-6">Voici les trois meilleurs joueurs :</p>
                 <div className="flex justify-center items-end gap-4 mt-6">
                     {sortedRanking.map((player, index) => {

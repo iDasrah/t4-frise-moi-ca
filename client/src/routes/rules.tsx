@@ -3,7 +3,7 @@ import {Link} from "react-router";
 export function Rules() {
 return (
     <div className="flex flex-col bg-darkBlue text-cream items-center justify-center min-h-screen p-4">
-        <h1 className="text-4xl font-bold mb-6 text-center">Règles du Jeu : Frise-moi ça!</h1>
+        <h1 className="text-4xl font-bold mb-6 text-center">Règles du jeu : Frise-moi ça !</h1>
         <div className="w-full max-w-3xl p-8 bg-white/10 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold mb-4">Objectif</h2>
             <p className="mb-6">
@@ -30,7 +30,7 @@ return (
                 <li>Une frise centrale où les cartes sont disposées dans leur ordre chronologique</li>
             </ul>
 
-            <h2 className="text-2xl font-semibold mb-4">Paramètres de la Partie</h2>
+            <h2 className="text-2xl font-semibold mb-4">Paramètres de la partie</h2>
             <p className="mb-6">
                 Avant de commencer, définissez les paramètres suivants :
             </p>
@@ -40,7 +40,7 @@ return (
 
             </ul>
 
-            <h2 className="text-2xl font-semibold mb-4">Déroulement de la Partie</h2>
+            <h2 className="text-2xl font-semibold mb-4">Déroulement de la partie</h2>
             <p className="mb-4">
                 La partie se déroule comme suit :
             </p>
@@ -56,13 +56,13 @@ return (
                 </li>
             </ol>
 
-            <h2 className="text-2xl font-semibold mb-4">Fin de Partie</h2>
+            <h2 className="text-2xl font-semibold mb-4">Fin de partie</h2>
             <p className="mb-4">
                 La partie se termine lorsqu'un joueur atteint le nombre de points requis pour gagner. Ce joueur est déclaré vainqueur.
             </p>
 
             <div className="flex justify-center gap-4">
-                <Link to="/" className="btn bg-lightBlue">Commencer</Link>
+                <Link to="/" className="btn btn-secondary">Commencer</Link>
             </div>
         </div>
     </div>

@@ -34,6 +34,10 @@
         @apply bg-blue-400 text-cream hover:bg-blue-500;
     }
 
+    .btn-secondary {
+        @apply bg-lightBlue text-cream hover:bg-lightBlue/80 cursor-pointer;
+    }
+
     .input-field {
         @apply w-[80%] bg-gray-400 p-2 border-1 border-darkBlue rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400;
     }
