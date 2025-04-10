@@ -7,7 +7,7 @@ interface PickProps {
 }
 
 export default function Pick({ data } : PickProps) {
-    const [cardsData, setCardsData] = useState<CardData[]>(data);
+    const [cardsData] = useState<CardData[]>(data);
 
     return <>
         <div className="flex flex-col items-center justify-center">

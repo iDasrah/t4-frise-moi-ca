@@ -7,7 +7,7 @@ interface TimelineProps {
 }
 
 const Timeline = ({ data }: TimelineProps) => {
-    const [cards, setCards] = useState<CardData[]>(data)
+    const [cards] = useState<CardData[]>(data)
 
     return <>
         <div className="flex flex-col items-center justify-center ">
