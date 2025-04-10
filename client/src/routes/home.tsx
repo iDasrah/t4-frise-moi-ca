@@ -1,6 +1,9 @@
 import {Link, Outlet} from "react-router";
+import {socket} from "../socket.ts";
 
 const Home = () => {
+    socket.connect();
+
     return (
         <>
             <div className="flex bg-darkBlue w-full h-screen">
