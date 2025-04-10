@@ -1,6 +1,5 @@
 import {useState} from "react";
-import {CardData, CardSide} from "../types.ts";
-import Card from "./Card.tsx";
+import {CardData} from "../types.ts";
 import {DndContext} from "@dnd-kit/core";
 
 interface TimelineProps {

@@ -11,9 +11,10 @@ export default function Pick({ data } : PickProps) {
 
     return <>
         <div className="flex flex-col items-center justify-center">
-                {cardsData[0] && (
-                    <Card data={cardsData[0]} initialSide={CardSide.BACK} turnable={false} />
-                )}
+            <h2 className="text-md mb-2">Pioche</h2>
+            {cardsData[0] && (
+                <Card data={cardsData[0]} initialSide={CardSide.BACK} turnable={false} />
+            )}
         </div>
     </>
 }
