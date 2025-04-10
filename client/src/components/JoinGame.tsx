@@ -19,7 +19,7 @@ const JoinGame = () => {
     return (
         <>
             <form onSubmit={handleSubmit} className="game-form">
-                <h2 className="text-2xl font-bold">Créer une partie</h2>
+                <h2 className="text-2xl font-bold">Rejoindre une partie</h2>
                 <label htmlFor="username">Entre ton nom</label>
                 <input className="input-field" type="text" name="username" id="username"
                        value={username}

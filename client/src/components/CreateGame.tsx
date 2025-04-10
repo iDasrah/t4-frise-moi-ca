@@ -34,14 +34,15 @@ const CreateGame = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4 justify-center text-white">
+            <form onSubmit={handleSubmit} className="game-form">
+                <h2 className="text-2xl font-bold">Créer une partie</h2>
                 <label htmlFor="username">Entre ton nom</label>
-                <input className="" type="text" name="username" id="username"
+                <input className="input-field" type="text" name="username" id="username"
                        value={username}
                        onChange={(e) => setUsername(e.target.value)}
                        placeholder="Ton p'tit nom" />
                 <label htmlFor="nb_players">Nombre de joueurs maximum</label>
-                <input className="" type="number" name="nb_players" id="nb_players"
+                <input className="input-field" type="number" name="nb_players" id="nb_players"
                        value={maxPlayers}
                        onChange={(e) => setMaxPlayers(Number(e.target.value))}
                        placeholder="Nombre de joueurs maximum"
