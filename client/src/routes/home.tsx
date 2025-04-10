@@ -19,6 +19,8 @@ const Home = () => {
                 <div className={`flex flex-col gap-4 items-center justify-center ${isBtnClicked ? 'w-1/2' : 'hidden'}`}>
                     <Outlet />
                 </div>
+
+                <Link to="/rules" className="btn absolute bottom-5 left-5 text-cream bg-lightBlue">Comment Jouer ?</Link>
             </div>
         </>
     )
