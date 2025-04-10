@@ -22,9 +22,11 @@ const Card = ({ data, initialSide, turnable }: CardProps) => {
     };
 
     return (
-        <div className="w-60 h-70 perspective ">
+        <div
+            className="w-60 h-80 perspective rounded-2xl"
+        >
             <div
-                className="relative w-full h-full transition-transform duration-1000 transform-style preserve-3d"
+                className="relative w-full h-full transition-transform duration-1000 transform-style preserve-3d border-7 border-cream2 rounded-2xl"
                 style={{
                     transform: `rotateY(${rotation}deg)`,
                 }}
@@ -35,7 +37,7 @@ const Card = ({ data, initialSide, turnable }: CardProps) => {
                 </div>
 
                 <div className="absolute w-full h-full backface-hidden rotate-y-180 z-[1]">
-                    <FrontCard  onClick={handleClick} data={data} />
+                    <FrontCard onClick={handleClick} data={data} />
                 </div>
             </div>
         </div>

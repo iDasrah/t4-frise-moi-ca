@@ -8,7 +8,7 @@ interface GameBoardProps {
 }
 const GameBoard = ({ data }: GameBoardProps) => {
     return (
-        <div className="bg-mainBlue h-screen text-white flex flex-col justify-between">
+        <div className="bg-darkBlue h-screen text-white flex flex-col justify-between">
             <div className="flex flex-col items-center justify-center flex-grow gap-5">
                 <div>
                     <Pick data={data} />

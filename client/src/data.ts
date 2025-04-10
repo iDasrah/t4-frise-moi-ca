@@ -3,7 +3,7 @@ const data = [
         title: "Card Title",
         type: "Card Type",
         thematic: "Thematic",
-        description: "Card Description",
+        description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ",
         date: "2023-10-01",
     },
     {
