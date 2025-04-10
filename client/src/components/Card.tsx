@@ -29,7 +29,7 @@ const Card = ({ data, initialSide, turnable }: CardProps) => {
     };
 
     return (
-        <div className="w-60 h-70 perspective-distant">
+        <div className="w-60 h-85 perspective-distant">
             <div
                 className="relative w-full h-full transition-transform duration-1000 transform-3d"
                 style={{
