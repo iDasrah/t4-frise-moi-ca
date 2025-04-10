@@ -7,8 +7,7 @@ interface GameProps {
 }
 
 const Game = ({ data }: GameProps) => {
-    const params = useParams<{ game_code: string }>();
-    const gameCode = params.game_code;
+    const {game_code: gameCode} = useParams<{ game_code: string }>();
 
     return (
         <div>
