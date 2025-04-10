@@ -11,7 +11,7 @@ const Game = ({ data }: GameProps) => {
 
     return (
         <div>
-            <GameBoard data={data} />
+            <GameBoard data={data}/>
         </div>
     )
 }
