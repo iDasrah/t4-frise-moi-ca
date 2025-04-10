@@ -1,20 +1,34 @@
-import {useState} from "react";
-import * as React from "react";
+import {FormEvent, useEffect, useState} from "react";
+import {socket} from "../socket.ts";
+import {useNavigate} from "react-router";
 
 const CreateGame = () => {
     const [username, setUsername] = useState('');
-    const [nbPlayers, setNbPlayers] = useState(0);
+    const [maxPlayers, setMaxPlayers] = useState(2);
+    const navigate = useNavigate();
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
-        const gameData = {
-            username: username,
-            nb_players: nbPlayers
-        };
-
-        console.log(gameData);
+        socket.emit('createGame', {
+            username,
+            maxPlayers
+        });
     }
+
+    useEffect(() => {
+            socket.on('createGame', (data) => {
+                if (data.error) {
+                    alert(data.message);
+                    return;
+                }
+                navigate(`/waiting-room/${data.gameCode}`);
+            })
+
+            return () => {
+                socket.off('createGame');
+            };
+        }, []
+    );
 
     return (
         <>
@@ -24,12 +38,12 @@ const CreateGame = () => {
                 <input className="input-field" type="text" name="username" id="username"
                        value={username}
                        onChange={(e) => setUsername(e.target.value)}
-                       placeholder="Ton p'tit nom"
-                />
+                       placeholder="Nom d'utilisateur" />
                 <label htmlFor="nb_players">Nombre de joueurs maximum</label>
                 <input className="input-field" type="number" name="nb_players" id="nb_players"
-                       value={nbPlayers}
-                       onChange={(e) => setNbPlayers(Number(e.target.value))}
+                       value={maxPlayers}
+                       onChange={(e) => setMaxPlayers(Number(e.target.value))}
+                       placeholder="Nombre de joueurs maximum"
                        min={2}
                        max={10}
                 />

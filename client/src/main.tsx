@@ -17,8 +17,8 @@ createRoot(document.getElementById('root')!).render(
                 <Route path="create-game" element={<CreateGame />} />
                 <Route path="join-game" element={<JoinGame />} />
           </Route>
-          <Route path="/waiting-room" element={<WaitingRoom />} />
-          <Route path="/game/:game_id" element={<Game cardsData={cardsData} playersData={playersData} />} />
+          <Route path="/waiting-room/:game_code" element={<WaitingRoom />} />
+          <Route path="/game/:game_code" element={<Game playersData={playersData} cardsData={cardsData} />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

@@ -1,35 +1,58 @@
-import {useState} from "react";
-import * as React from "react";
+import {FormEvent, useEffect, useState} from "react";
+import {socket} from "../socket.ts";
+import {useNavigate, useSearchParams} from "react-router";
 
 const JoinGame = () => {
     const [username, setUsername] = useState('')
-    const [gameId, setGameId] = useState('')
+    const [gameCode, setGameCode] = useState('')
+    const navigate = useNavigate();
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const [searchParams] = useSearchParams();
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const gameData = {
-            username: username,
-            gameId: gameId
-        };
-
-        console.log(gameData);
+        socket.emit('joinGame', {
+            username,
+            gameCode
+        });
     }
+
+    useEffect(() => {
+            const codeParam = searchParams.get('code');
+            if (codeParam) {
+                setGameCode(codeParam.toString());
+            }
+
+            socket.on('joinGame', (data) => {
+                if (data.error) {
+                    alert(data.message);
+                    return;
+                }
+                navigate(`/waiting-room/${data.gameCode}`);
+            })
+
+            return () => {
+                socket.off('joinGame');
+            };
+        }, [searchParams]
+    );
 
     return (
         <>
             <form onSubmit={handleSubmit} className="game-form">
-                <h2 className="text-2xl font-bold">Créer une partie</h2>
+                <h2 className="text-2xl font-bold">Rejoindre une partie</h2>
                 <label htmlFor="username">Entre ton nom</label>
                 <input className="input-field" type="text" name="username" id="username"
                        value={username}
                        onChange={(e) => setUsername(e.target.value)}
-                       placeholder="Ton p'tit nom"
+                       placeholder="Nom d'utilisateur"
                 />
                 <label htmlFor="nb_players">Code de la partie</label>
                 <input className="input-field" type="text" name="gameId" id="gameId"
-                       value={gameId}
-                       onChange={(e) => setGameId(e.target.value)}
+                       value={gameCode}
+                       onChange={(e) => setGameCode(e.target.value)}
+                       placeholder="ABCDEF"
                        min={2}
                        max={10}
                 />

@@ -3,7 +3,7 @@ export const cardsData = [
         title: "Card Title",
         type: "Card Type",
         thematic: "Thematic",
-        description: "Card Description",
+        description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ",
         date: "2023-10-01",
     },
     {
@@ -60,33 +60,43 @@ export const cardsData = [
 export const playersData = [
     {
         name: "Player 1",
+        points: 1,
     }
     ,
     {
         name: "Player 2",
+        points: 2,
     },
     {
         name: "Player 3",
+        points: 3,
     },
     {
         name: "Player 4",
+        points: 4,
     },
     {
         name: "Player 5",
+        points: 5,
     },
     {
         name: "Player 6",
+        points: 6,
     },
     {
         name: "Player 7",
+        points: 7,
     },
     {
         name: "Player 8",
+        points: 8,
     },
     {
         name: "Player 9",
+        points: 9,
     },
     {
         name: "Player 10",
+        points: 10,
     },
 ];
