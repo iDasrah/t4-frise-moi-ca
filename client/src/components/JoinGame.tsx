@@ -39,12 +39,13 @@ const JoinGame = () => {
                 <input className="input-field" type="text" name="username" id="username"
                        value={username}
                        onChange={(e) => setUsername(e.target.value)}
-                       placeholder="Ton p'tit nom"
+                       placeholder="Nom d'utilisateur"
                 />
                 <label htmlFor="nb_players">Code de la partie</label>
                 <input className="input-field" type="text" name="gameId" id="gameId"
                        value={gameCode}
                        onChange={(e) => setGameCode(e.target.value)}
+                       placeholder="ABCDEF"
                        min={2}
                        max={10}
                 />

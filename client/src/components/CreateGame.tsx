@@ -38,7 +38,7 @@ const CreateGame = () => {
                 <input className="input-field" type="text" name="username" id="username"
                        value={username}
                        onChange={(e) => setUsername(e.target.value)}
-                       placeholder="Ton p'tit nom" />
+                       placeholder="Nom d'utilisateur" />
                 <label htmlFor="nb_players">Nombre de joueurs maximum</label>
                 <input className="input-field" type="number" name="nb_players" id="nb_players"
                        value={maxPlayers}
