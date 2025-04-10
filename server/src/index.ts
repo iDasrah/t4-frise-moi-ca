@@ -5,6 +5,8 @@ import cors from 'cors';
 import { Server } from "socket.io"
 import * as user from './entity/user';
 import * as game from './entity/game';
+import { fetchData } from './data';
+import {CardData} from "./types";
 
 const app = express();
 const port = 3000;
@@ -16,7 +18,7 @@ app.use((err: HttpError|StructError, req: Request, res: Response, next: NextFunc
   res.status(err.status ?? 500).send();
 });
 
-const server = app.listen(port, () => {
+const server = app.listen(port, async () => {
   console.log(`App listening on port ${port}`);
 });
 
@@ -72,7 +74,7 @@ io.on('connection', socket => {
     io.to(gameCode).emit('usersInGame', user.getAllInGame(gameCode));
   })
 
-  socket.on('createGame', ({ username, maxPlayers }: { username: string, maxPlayers: number }) => {
+  socket.on('createGame', async ({ username, maxPlayers }: { username: string, maxPlayers: number }) => {
     let gameCode: string;
 
     while (true) {
@@ -90,6 +92,7 @@ io.on('connection', socket => {
       });
       return;
     }
+
     if (maxPlayers < 2) {
       socket.emit('createGame', {
         error: true,
@@ -97,6 +100,11 @@ io.on('connection', socket => {
       });
       return;
     }
+
+    if (game.getAll().length === 1) {
+        const data: CardData[] = await fetchData();
+    }
+
     game.activate(gameCode, maxPlayers);
     user.activate(socket.id, username, gameCode, true);
     socket.join(gameCode);

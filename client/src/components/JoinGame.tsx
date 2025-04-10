@@ -41,17 +41,18 @@ const JoinGame = () => {
     return (
         <>
             <form onSubmit={handleSubmit} className="game-form">
-                <h2 className="text-2xl font-bold">Créer une partie</h2>
+                <h2 className="text-2xl font-bold">Rejoindre une partie</h2>
                 <label htmlFor="username">Entre ton nom</label>
                 <input className="input-field" type="text" name="username" id="username"
                        value={username}
                        onChange={(e) => setUsername(e.target.value)}
-                       placeholder="Ton p'tit nom"
+                       placeholder="Nom d'utilisateur"
                 />
                 <label htmlFor="nb_players">Code de la partie</label>
                 <input className="input-field" type="text" name="gameId" id="gameId"
                        value={gameCode}
                        onChange={(e) => setGameCode(e.target.value)}
+                       placeholder="ABCDEF"
                        min={2}
                        max={10}
                 />

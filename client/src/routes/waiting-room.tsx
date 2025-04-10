@@ -57,7 +57,7 @@ const WaitingRoom = () => {
             socket.off('user');
             socket.off('startGame');
         };
-    })
+    }, [gameCode, navigate]);
 
     return (
         <div className="w-screen h-screen flex flex-col items-center justify-center bg-gray-800 text-white pt-3">
