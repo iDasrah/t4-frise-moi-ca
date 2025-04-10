@@ -17,8 +17,8 @@ export function EndScreen({ playersData } : EndScreenProps) {
                 <p className="text-sm text-gray-300 mb-6">Voici les trois meilleurs joueurs :</p>
                 <div className="flex justify-center items-end gap-4 mt-6">
                     {ranking
-                        .sort((a, b) => b.points - a.points) // Trier les joueurs par points décroissants
-                        .slice(0, 3) // Prendre les 3 premiers joueurs
+                        .sort((a, b) => b.points - a.points)
+                        .slice(0, 3)
                         .map((player, index) => (
                             <div
                                 key={index}
@@ -32,15 +32,18 @@ export function EndScreen({ playersData } : EndScreenProps) {
                                         index === 0
                                             ? "fill-yellow-400"
                                             : index === 1
-                                            ? "fill-gray-500"
-                                            : "fill-amber-900"
+                                                ? "fill-gray-500"
+                                                : "fill-amber-900"
                                     }
                                 />
                                 <div
-                                    className="w-60 bg-white/10 border border-white rounded-xs"
-                                    style={{
-                                        height: `${player.points * 40}px`,
-                                    }}
+                                    className={`w-60 ${
+                                        index === 0
+                                            ? "h-110"
+                                            : index === 1
+                                                ? "h-90"
+                                                : "h-70"
+                                    } bg-white/10 border border-white rounded-xs`}
                                 ></div>
                                 <span className="mt-2 font-bold">{player.name}</span>
                                 <span>{player.points} points</span>
