@@ -18,6 +18,11 @@ const WaitingRoom = () => {
         socket.emit('startGame');
     }
 
+    function handleLeaveGame() {
+        socket.disconnect();
+        navigate("/");
+    }
+
     useEffect(() => {
         socket.emit('user')
         socket.emit('game')
@@ -29,6 +34,9 @@ const WaitingRoom = () => {
 
         socket.on('game', (data: Game) => {
             setGame(data);
+            if (data.hasStarted) {
+                navigate(`/game/${gameCode}`);
+            }
         })
 
         socket.on('user', (data: User) => {
@@ -46,6 +54,7 @@ const WaitingRoom = () => {
         return () => {
             socket.off('usersInGame');
             socket.off('game');
+            socket.off('user');
             socket.off('startGame');
         };
     }, [gameCode, navigate]);
@@ -80,6 +89,10 @@ const WaitingRoom = () => {
                             Démarrer la partie
                         </button>
                     )}
+                    <button
+                        className="btn btn-secondary mt-4"
+                        onClick={handleLeaveGame}
+                    >Quitter</button>
                 </div>
 
                 <div className="bg-gray-300 text-black p-6 rounded-lg flex flex-col justify-start w-3/4">
