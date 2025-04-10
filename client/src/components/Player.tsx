@@ -1,4 +1,6 @@
 
+import {PlayerData} from "../types.ts";
+
     interface PlayerProps {
         data: PlayerData;
     }
