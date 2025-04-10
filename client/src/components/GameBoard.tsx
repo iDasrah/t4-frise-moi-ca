@@ -16,20 +16,23 @@ const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
     const [pickedCard, setPickedCard] = useState<CardData | null>(null);
     const [remainingCards, setRemainingCards] = useState<CardData[]>(cardsData);
     const [cards, setCards] = useState<CardData[]>([]);
+    const [pickCards, setPickCards] = useState<CardData[]>(cardsData);
     const [isDragging, setIsDragging] = useState(false);
     const [currentPlayer, setCurrentPlayer] = useState<PlayerData>(playersData[0]);
 
     const handlePick = () => {
-        const [nextCard, ...rest] = remainingCards;
-        setPickedCard(nextCard);
+        if (pickCards.length === 0) return;
 
-        const currentPlayer = {
-            ...playersData[0],
-            card: nextCard,
-        }
+        const picked = pickCards[0];
+        setPickedCard(picked);
+        setPickCards(pickCards.slice(1));
+        setRemainingCards(remainingCards.filter(card => card.id !== picked.id));
 
-        setCurrentPlayer(currentPlayer);
-        setRemainingCards(rest);
+        const updatedPlayer = {
+            ...currentPlayer,
+            card: picked,
+        };
+        setCurrentPlayer(updatedPlayer);
     };
 
     const handleDragStart = () => {
@@ -72,7 +75,7 @@ const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
 
                 <div className="flex gap-5">
                     <Player playerData={currentPlayer} />
-                    <Pick onPick={handlePick} data={cardsData} />
+                    <Pick onPick={handlePick} cardsData={pickCards} />
                 </div>
 
                 <Link to="/" className="btn btn-danger absolute bottom-5 left-5">

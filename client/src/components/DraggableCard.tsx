@@ -16,6 +16,7 @@ export default function DraggableCard({ data }: DraggableCardProps) {
             ref={setNodeRef}
             {...listeners}
             {...attributes}
+            data-id="picked-card"
             style={{
                 transform: transform
                     ? `translate(${transform.x}px, ${transform.y}px)`

@@ -1,5 +1,6 @@
 export const cardsData = [
     {
+        id: 1,
         title: "Card Title",
         type: "Card Type",
         thematic: "Thematic",
@@ -7,6 +8,7 @@ export const cardsData = [
         date: "2023-10-01",
     },
     {
+        id: 2,
         title: "Card Title 2",
         type: "Card Type 2",
         thematic: "Thematic 2",
@@ -14,6 +16,7 @@ export const cardsData = [
         date: "2023-10-02",
     },
     {
+        id: 3,
         title: "Card Title 3",
         type: "Card Type 3",
         thematic: "Thematic 3",
@@ -21,6 +24,7 @@ export const cardsData = [
         date: "2023-10-03",
     },
     {
+        id: 4,
         title: "Card Title 4",
         type: "Card Type 4",
         thematic: "Thematic 4",
@@ -28,6 +32,7 @@ export const cardsData = [
         date: "2023-10-04",
     },
     {
+        id: 5,
         title: "Card Title 5",
         type: "Card Type 5",
         thematic: "Thematic 5",
@@ -35,6 +40,7 @@ export const cardsData = [
         date: "2023-10-05",
     },
     {
+        id: 6,
         title: "Card Title 6",
         type: "Card Type 6",
         thematic: "Thematic 6",
@@ -42,6 +48,7 @@ export const cardsData = [
         date: "2023-10-06",
     },
     {
+        id: 7,
         title: "Card Title 7",
         type: "Card Type 7",
         thematic: "Thematic 7",
@@ -49,6 +56,7 @@ export const cardsData = [
         date: "2023-10-07",
     },
     {
+        id: 8,
         title: "Card Title 8",
         type: "Card Type 8",
         thematic: "Thematic 8",

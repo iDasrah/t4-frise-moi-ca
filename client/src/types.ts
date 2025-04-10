@@ -1,4 +1,5 @@
 export type CardData = {
+    id: number;
     title: string;
     type: string;
     thematic: string;
