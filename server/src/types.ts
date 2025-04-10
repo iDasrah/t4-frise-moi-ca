@@ -3,6 +3,7 @@ export type User = {
     name: string;
     gameCode: string;
     isHost: boolean;
+    isActive: boolean;
     points: number;
 }
 
@@ -26,10 +27,33 @@ export type Game = {
     maxPlayers: number;
 }
 
-export type CardData = {
+export type Card = {
+    id: number;
     title: string;
     type: string;
     thematic: string;
     description: string;
-    date: string;
+    textDate: string;
+    dates: Date[];
+}
+
+export const CardsState = {
+    cards: [] as Card[],
+    setCards: function (newCards: Card[]) {
+        this.cards = newCards;
+    }
+}
+
+export type GameUtils = {
+    gameCode: string;
+    deck: Card[];
+    timeline: Card[];
+    activeCard: Card|null;
+}
+
+export const GamesUtilsState = {
+    gamesUtils: [] as GameUtils[],
+    setGamesUtils: function (newGamesUtils: GameUtils[]) {
+        this.gamesUtils = newGamesUtils;
+    }
 }
