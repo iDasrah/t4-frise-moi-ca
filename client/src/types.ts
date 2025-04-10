@@ -26,6 +26,7 @@ export type Game = {
 }
 
 export type PlayerData = {
-    points: any;
+    points: number;
     name: string;
+    card?: CardData | null;
 }

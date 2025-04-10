@@ -1,10 +1,11 @@
-import Pick from "./Pick.tsx";
-import {CardData, PlayerData} from "../types.ts";
-import Timeline from "./Timeline.tsx";
+import { useState } from "react";
+import {DndContext, DragEndEvent} from "@dnd-kit/core";
+import Pick from "./Pick";
+import Timeline from "./Timeline";
+import { CardData, PlayerData } from "../types";
 import { Link } from "react-router";
 import PlayersList from "./PlayersList.tsx";
 import Player from "./Player.tsx";
-import { useState } from "react";
 
 interface GameBoardProps {
     cardsData: CardData[];
@@ -12,61 +13,74 @@ interface GameBoardProps {
 }
 
 const GameBoard = ({ cardsData, playersData }: GameBoardProps) => {
-    const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
-    const [turnNumber, setTurnNumber] = useState(1);
+    const [pickedCard, setPickedCard] = useState<CardData | null>(null);
+    const [remainingCards, setRemainingCards] = useState<CardData[]>(cardsData);
+    const [cards, setCards] = useState<CardData[]>([]);
+    const [isDragging, setIsDragging] = useState(false);
+    const [currentPlayer, setCurrentPlayer] = useState<PlayerData>(playersData[0]);
 
-    const currentPlayer = playersData[currentPlayerIndex];
+    const handlePick = () => {
+        const [nextCard, ...rest] = remainingCards;
+        setPickedCard(nextCard);
 
-    const nextTurn = () => {
-        if (currentPlayerIndex + 1 < playersData.length) {
-            setCurrentPlayerIndex(currentPlayerIndex + 1);
-        } else {
+        const currentPlayer = {
+            ...playersData[0],
+            card: nextCard,
+        }
 
-            setCurrentPlayerIndex(0);
-            setTurnNumber(turnNumber + 1);
+        setCurrentPlayer(currentPlayer);
+        setRemainingCards(rest);
+    };
+
+    const handleDragStart = () => {
+        setIsDragging(true);
+    };
+
+    const handleDragEnd = (event: DragEndEvent) => {
+        setIsDragging(false);
+
+        if (!pickedCard || !event.over) return;
+
+        const id = String(event.over.id);
+        if (id.startsWith("slot-")) {
+            const index = parseInt(id.split("-")[1], 10);
+            handleDrop(pickedCard, index);
         }
     };
 
+    const handleDrop = (card: CardData, index: number) => {
+        const updated = [...cards];
+        updated.splice(index, 0, card);
+        setCards(updated);
+        setPickedCard(null);
+
+        const updatedPlayer = {
+            ...currentPlayer,
+            card: null,
+        };
+        setCurrentPlayer(updatedPlayer);
+    };
 
     return (
-        <div className="bg-mainBlue text-white min-h-screen flex flex-col justify-between relative">
-            <PlayersList playersData={playersData} />
-
-            <Timeline data={cardsData} />
-
-            <div className="flex items-center justify-center gap-12">
-                <div className="relative bottom-3.5">
-                    <Player playerData={playersData[0]} />
-                </div>
-                <Pick data={cardsData} />
-            </div>
-
-
-            <div className="absolute bottom-25 right-105 flex flex-col items-center">
-                <h2 className="text-md mb-2">Pioche</h2>
-                <Pick
-                    data={cardsData}
-                    onClick={() => {
-                        console.log(`${currentPlayer.name} pioche une carte`);
-                        nextTurn();
-                    }}
-                    canDraw={true}
-
-                    /*
-                canDraw={true}
-                    onDraw={() => {
-                        console.log(`${currentPlayer.name} pioche une carte`);
-
-
-
-                        nextTurn();
-
-                        */
+        <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+            <div className="bg-mainBlue h-screen text-white pt-5 flex flex-col gap-5 items-center">
+                <PlayersList playersData={playersData} />
+                <Timeline
+                    cardsData={cards}
+                    isDragging={isDragging}
                 />
-            </div>
 
-            <Link to="/" className="btn btn-danger absolute bottom-5 left-5">Quitter</Link>
-        </div>
+                <div className="flex gap-5">
+                    <Player playerData={currentPlayer} />
+                    <Pick onPick={handlePick} data={cardsData} />
+                </div>
+
+                <Link to="/" className="btn btn-danger absolute bottom-5 left-5">
+                    Quitter
+                </Link>
+            </div>
+        </DndContext>
     );
 };
+
 export default GameBoard;
