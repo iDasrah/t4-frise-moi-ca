@@ -97,6 +97,6 @@ export const playersData = [
     },
     {
         name: "Baptiste",
-        points: 10,
+        points: 15,
     },
 ];
