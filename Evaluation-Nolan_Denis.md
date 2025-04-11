@@ -120,8 +120,8 @@ Justifications : tout les fichier et commentaire des commits sont corectement no
   - [ ] Le prototype est rarement instable
   - [ ] Le prototype est instable
 - Affordabilité
-  - [ ] Toutes les instructions de jeu sont incluses dans le prototype au cours d'une partie normale.
-  - [x] Les instructions de jeu sont sous forme d'un manuel ou d'un tutoriel à part.
+  - [x] Toutes les instructions de jeu sont incluses dans le prototype au cours d'une partie normale.
+  - [ ] Les instructions de jeu sont sous forme d'un manuel ou d'un tutoriel à part.
   - [ ] Les instructions de jeu ne sont pas données.
 - Transmission du concept
   - [x] J'ai appris quelque chose en jouant.
@@ -193,4 +193,4 @@ Pour un exemple de ce qui est attenu, voir https://gitlab.unistra.fr/T234/t4-exe
 - Total d'item « Excellent » (2 point) : 
 - Total d'item « Satisfaisant » (1 point) : 
 - Total d'item « Insatisfaisant » (0 point) :
-- total des points (sur 50) : 35
+- total des points (sur 50) : 36
