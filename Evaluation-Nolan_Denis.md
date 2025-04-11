@@ -26,7 +26,7 @@ Les étapes du projet tuteuré T2 sont les suivantes :
 
 # Propositions d'amélioration du cahier des charges
 
-- cahier des charges clair personellement je ne vois pas d'amélioration possible
+- cahier des charges clair, peut être revoire la formulation des phrases
 - Proposition 2
 
 # Propositions d'amélioration du jeu
