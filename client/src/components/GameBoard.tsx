@@ -80,6 +80,12 @@ const GameBoard = () => {
             navigate("/end");
         });
 
+        socket.on("yourTurn", (nextUser: User) => {
+            console.log(nextUser);
+
+            setUser(nextUser);
+        });
+
         socket.on("user", (socketUser: User) => {
             setUser(socketUser);
         });
@@ -97,6 +103,7 @@ const GameBoard = () => {
             socket.off("cardsTimeline");
             socket.off("endGame");
             socket.off("user");
+            socket.off("yourTurn");
             socket.off("usersInGameExcludeUser");
         };
     }, [navigate]);

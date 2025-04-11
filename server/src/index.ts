@@ -203,7 +203,10 @@ io.on('connection', socket => {
       io.to(existingUser.gameCode).emit('endGame');
       return;
     }
-    game.setNextActiveUser(existingUser.gameCode);
+    const nextUser = game.setNextActiveUser(existingUser.gameCode);
+    if (!nextUser) return;
+
+    socket.broadcast.to(nextUser.id).emit('yourTurn', nextUser);
     io.to(existingUser.gameCode).emit('usersInGame', user.getAllInGame(existingUser.gameCode));
     io.to(existingUser.gameCode).emit('cardsTimeline', gamesUtils.getTimeline(existingUser.gameCode));
   })
