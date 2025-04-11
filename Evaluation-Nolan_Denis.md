@@ -31,7 +31,7 @@ Les étapes du projet tuteuré T2 sont les suivantes :
 
 # Propositions d'amélioration du jeu
 
-- Proposition 1
+- avoir un indicateur pour savoir a qui est le tour de jouer
 - Proposition 2
 
 ## Grille d'évaluation T2 (à remplir par les membres du groupe T4)
