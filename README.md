@@ -38,8 +38,6 @@ Il suffit simplement de se rendre sur ce lien : https://t4-frise-moi-ca.vercel.a
 
 ## Cahier des charges
 
-Pour un exemple de ce qui est attendu, voir https://gitlab.unistra.fr/T234/t4-exemple
-
 ### Objectifs pédagogiques
 
 ##### Comprendre l’évolution des services publics
@@ -80,30 +78,31 @@ Chaque carte a deux faces :
   * type
   * description
 
-#### Gestion des parties en ligne
-
-- Les joueurs doivent pouvoir jouer à partir de n'importe quel ordinateur disposant d'une connexion internet
-- Plusieurs parties peuvent se jouer en même temps
-- Jusqu'à 10 joueurs peuvent jouer dans la même partie
-
 #### Interface
 Éléments qui composent l'interface :
 - Écran d'accueil avec choix entre créer et rejoindre une partie
 - Formulaire pour créer une partie
 - Formulaire pour rejoindre une partie
+- Écran d'attente des joueurs
 - Écran principal de jeu avec :
   - Une pioche
   - La frise chronologique du joueur actuel
   - La carte du joueur actuel, avec son nom et ses points
   - Les noms et les points des autres joueurs
   - Un bouton Quitter
-- Écran de fin
+- Écran de fin avec :
+  - Boutons pour revenir menu ou bien de relancer une partie
+  - Podium affichant les statistiques des trois premiers joueurs
 
 #### Actions du joueur
 
 Écran d'accueil :
-- Créer une partie
-- Rejoindre une partie
+- Créer une partie privée ou publique
+- Rejoindre une partie privée ou publique
+
+Salle d'attente :
+- Quitter la salle d'attente
+- Lancer la partie
 
 Écran de jeu :
 - Piocher une carte
@@ -114,6 +113,21 @@ Chaque carte a deux faces :
 - Revenir à l'écran d'accueil
 - Créer une nouvelle partie
 
+#### Gestion des parties en ligne
+
+- Les joueurs doivent pouvoir jouer à partir de n'importe quel ordinateur disposant d'une connexion internet
+- Plusieurs parties peuvent se jouer en même temps
+- Jusqu'à 10 joueurs peuvent jouer dans la même partie
+- Possibilité de créer des parties publiques ou privées
+- Les parties privées doivent être protégées par un mot de passe ou un code unique.
+- Ajout d'un mode spectateur pour permettre à des utilisateurs de suivre une partie en cours.
+- Intégration d'un chat en ligne pour permettre aux joueurs de communiquer pendant la partie.
+
+#### Accessibilité
+
+Le jeu doit être compatible avec les navigateurs modernes (Chrome, Firefox, Edge, Safari).
+Le jeu doit être responsive et fonctionner sur mobile, tablette et ordinateur.
+
 ### Scénarios
 
 - Parties à nombre de joueurs variable (jusqu'à 10)
@@ -121,8 +135,19 @@ Chaque carte a deux faces :
 
 ### Contraintes de développement
 
-- Code modularisé
+- Code modularisé, qui sépare vue et modèle
+- Le code doit être documenté pour faciliter la maintenance.
 
 ### Fonctionnalités et scénarios avancés
 
-- Modes de jeu différents
+- Modes de jeu différents : 
+    - Mode solo : un joueur peut s'entraîner tout seul
+    - Mode collaboratif : Les joueurs peuvent coopérer pour construire une frise commune et atteindre un objectif collectif.
+    - Mode contre-la-montre : Les joueurs doivent placer correctement le plus de cartes possibles dans un temps imparti
+
+- Personnalisation : 
+    - Les joueurs peuvent créer et ajouter leurs propres cartes historiques.
+
+- Statistiques : 
+  - Un tableau des scores en ligne pour comparer les performances des joueurs.
+  - Débloquer des badges ou des succès en fonction des performances ou des actions spécifiques.
