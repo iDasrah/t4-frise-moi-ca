@@ -1,11 +1,12 @@
-import {FormEvent, useEffect, useState} from "react";
-import {socket} from "../socket.ts";
+import {FormEvent, useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router";
+import {SocketContext} from "./SocketContext.tsx";
 
 const CreateGame = () => {
     const [username, setUsername] = useState('');
     const [maxPlayers, setMaxPlayers] = useState(2);
     const navigate = useNavigate();
+    const socket = useContext(SocketContext);
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();

@@ -1,11 +1,12 @@
-import {FormEvent, useEffect, useState} from "react";
-import {socket} from "../socket.ts";
+import {FormEvent, useContext, useEffect, useState} from "react";
 import {useNavigate, useSearchParams} from "react-router";
+import {SocketContext} from "./SocketContext.tsx";
 
 const JoinGame = () => {
     const [username, setUsername] = useState('')
     const [gameCode, setGameCode] = useState('')
     const navigate = useNavigate();
+    const socket = useContext(SocketContext);
 
     const [searchParams] = useSearchParams();
 

@@ -10,20 +10,23 @@ import CreateGame from "./components/CreateGame.tsx";
 import JoinGame from "./components/JoinGame.tsx";
 import {EndScreen} from "./routes/end-screen.tsx";
 import {Rules} from "./routes/rules.tsx";
+import {SocketProvider} from "./components/SocketContext.tsx";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <Routes>
+      <SocketProvider>
+        <Routes>
           <Route path="/" element={<Home />}>
-                <Route path="create-game" element={<CreateGame />} />
-                <Route path="join-game" element={<JoinGame />} />
+            <Route path="create-game" element={<CreateGame />} />
+            <Route path="join-game" element={<JoinGame />} />
           </Route>
           <Route path="/waiting-room/:game_code" element={<WaitingRoom />} />
           <Route path="/game/:game_code" element={<Game />}/>
           <Route path="/end" element={<EndScreen playersData={playersData}/>}/>
           <Route path="/rules" element={<Rules/>}/>
-      </Routes>
+        </Routes>
+      </SocketProvider>
     </BrowserRouter>
   </StrictMode>,
 )
