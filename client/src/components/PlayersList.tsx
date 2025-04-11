@@ -1,4 +1,5 @@
 import {PlayerData} from "../types.ts";
+import {Star} from "lucide-react";
 
 interface PlayersListProps {
     playersData: PlayerData[];
@@ -11,8 +12,8 @@ const PlayersList = ({ playersData }: PlayersListProps) => {
                 <div key={index} className="flex flex-col items-center text-sm">
                     <span>{player.name}</span>
                     <div className="flex items-center gap-1">
-                        <span className="text-yellow-400 text-xl">⭐</span>
-                        <span>{player.points}/15</span>
+                        <span>{player.points}</span>
+                        <Star className="size-6 fill-yellow-400 text-yellow-400" />
                     </div>
                 </div>
             ))}

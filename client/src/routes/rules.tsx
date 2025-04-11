@@ -37,7 +37,7 @@ return (
             <ul className="list-disc list-inside mb-6 pl-4">
                 <li>Nombre de joueurs</li>
                 <li>Pour chaque joueur un pseudo</li>
-
+                <li>Nombre de points requis pour gagner</li>
             </ul>
 
             <h2 className="text-2xl font-semibold mb-4">Déroulement de la partie</h2>

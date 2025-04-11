@@ -4,7 +4,6 @@ import Pick from "./Pick";
 import Timeline from "./Timeline";
 import {CardData, User} from "../types";
 import {Link, useNavigate} from "react-router";
-import PlayersList from "./PlayersList.tsx";
 import Player from "./Player.tsx";
 import {
     restrictToWindowEdges
