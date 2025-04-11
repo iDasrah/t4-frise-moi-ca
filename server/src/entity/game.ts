@@ -58,6 +58,7 @@ export function setNextActiveUser(code: string) {
             if (users[i].isActive) {
                 user.updateOne(users[i].id, {isActive: false});
                 user.updateOne(users[(i + 1) % users.length].id, {isActive: true});
+                return user.getOne(users[(i + 1) % users.length].id);
             }
         }
     }
