@@ -8,7 +8,8 @@
   - [Évaluation de Noah Dumangin](Evaluation-Noah_Dumangin.md)
   - [Évaluation de Nolan Denis](Evaluation-Nolan_Denis.md)
   - [Évaluation de Thomas Barseghian](Evaluation-Thomas_Barseghian.md)
-  - [Évaluation T4](Evaluation-T4.md)
+  - [Évaluation de Emina Halimovic](Evaluation-Emina_Halimovic.md)
+  - [Évaluation de Fabio Giorgi Panazzolo](Evaluation-Fabio_Giorgi_Panazzolo.md)
 
 ## Instructions de fork :
 
