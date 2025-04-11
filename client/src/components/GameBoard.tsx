@@ -18,6 +18,7 @@ const GameBoard = () => {
     const [user, setUser] = useState<User>({ id: "", name: "", gameCode: "", isHost: false, isActive: false, points: 0 });
     const [usersWithoutMe, setUsersWithoutMe] = useState<User[]>([]);
     const [game, setGame] = useState<Game>({ code: "", hasStarted: false, maxPlayers: 0, minPoints: 0 });
+    const [message, setMessage] = useState<string | null>(null);
     const navigate = useNavigate();
     const socket = useContext(SocketContext);
 
@@ -68,6 +69,14 @@ const GameBoard = () => {
 
         socket.emit("usersInGameExcludeUser");
 
+        socket.on('message', (msg: string) => {
+            setMessage(msg);
+            setTimeout(() => {
+                setMessage(null);
+            }, 3000);
+        }
+        );
+
         socket.on("pickCard", (card: Omit<CardData, "date">) => {
             setPickedCard(card);
         });
@@ -110,6 +119,11 @@ const GameBoard = () => {
 
     return (
         <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd} modifiers={[restrictToWindowEdges]}>
+            {message && (
+                <div className="fixed top-0 left-0 right-0 bg-cream text-center p-4">
+                    {message}
+                </div>
+            )}
             <div className="bg-mainBlue h-screen text-white pt-5 flex flex-col gap-5 items-center">
                 <PlayersList users={usersWithoutMe} />
                 <Timeline
