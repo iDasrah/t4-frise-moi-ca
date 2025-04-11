@@ -26,13 +26,43 @@ Les étapes du projet tuteuré T2 sont les suivantes :
 
 # Propositions d'amélioration du cahier des charges
 
-- Proposition 1
-- Proposition 2
+- Certaine phrase sont floue"Le temps de l'éducation n'est pas le temps du politique."
+pourrait devenir :
+"Les effets des politiques éducatives se manifestent sur le long terme, souvent au-delà du mandat politique classique."
+
+- Une capture d'écran sur le jeu en lui même est manquant.
+
+- Comment le joueur voit-il les effets de ses décisions ? Animation, surbrillance, statistiques comparées?
+
+- Trop denses en un seul bloc. À diviser par thème.
+
+- Ajouter schéma d’architecture ou info sur techno utilisée.
 
 # Propositions d'amélioration du jeu
 
-- Proposition 1
-- Proposition 2
+- L’élément de pioche n’est pas très intuitif : il faudrait afficher la carte automatiquement lorsqu’un joueur doit jouer.
+
+- Afficher le nombre de tours restants et indiquer clairement quel joueur doit jouer.
+
+- Ajouter davantage d’éléments sur les cartes pour les rendre plus compréhensibles.
+
+- Afficher la frise de manière responsive, en fonction du nombre de cartes ou regler l'affichage des cartes qui n'est pas claire.
+
+-Permettre de connaître l’ordre des cartes jouées.
+
+- Indiquer si la réponse donnée est correcte ou non.
+
+- Définir un nombre maximum de tours.
+
+- Ajouter un champ pour saisir le nombre de joueurs.
+
+- Corriger les bugs d’affichage sur Chrome et sur mobile.
+
+- Résoudre le problème des cartes qui ne s’affichent pas.
+
+- Mettre en place une limite de temps pour chaque tour.
+
+
 
 ## Grille d'évaluation T2 (à remplir par les membres du groupe T4)
 
@@ -132,16 +162,16 @@ Autres justifications :
 ## Présentation README.md
 
 - Présentation du projet
-  - [ ] Cette partie est informative et succincte (1 phrase).
+  - [x] Cette partie est informative et succincte (1 phrase).
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Captures d'écran
   - [ ] Plusieurs captures d'écran soignées sont données.
-  - [ ] Une capture d'écran est donnée.
+  - [x] Une capture d'écran est donnée.
   - [ ] Aucune capture d'écran n'est donnée.
 - Procédures d'installation et d'exécution
   - [ ] Cette partie est informative et succincte (1 phrase).
-  - [ ] Cette partie est informative.
+  - [x] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 
 ## Cahier des charges 
@@ -149,40 +179,40 @@ Autres justifications :
 Pour un exemple de ce qui est attenu, voir https://gitlab.unistra.fr/T234/t4-exemple
 
 - Objectifs pédagogiques
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Objectifs pédagogiques avancés 
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Références
   - [ ] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
-  - [ ] Cette partie n'est pas informative.
+  - [x] Cette partie n'est pas informative.
 - Description des fonctionnalités (hors interface et actions)
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Interface
   - [ ] Cette partie est informative et correspond au style de l'exemple.
-  - [ ] Cette partie est informative.
+  - [x] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Actions du joueur
   - [ ] Cette partie est informative et correspond au style de l'exemple.
-  - [ ] Cette partie est informative.
+  - [x] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Scénarios
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Contraintes de développement
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Fonctionnalités et scénarios avancés
   - [ ] Cette partie est informative et correspond au style de l'exemple.
-  - [ ] Cette partie est informative.
+  - [x] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 
 
