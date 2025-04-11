@@ -9,12 +9,14 @@ import {
     restrictToWindowEdges
 } from "@dnd-kit/modifiers";
 import {SocketContext} from "./SocketContext.tsx";
+import PlayersList from "./PlayersList.tsx";
 
 const GameBoard = () => {
     const [pickedCard, setPickedCard] = useState<Omit<CardData, "date"> | null>(null);
     const [cards, setCards] = useState<(CardData|Omit<CardData, "date">)[]>([]);
     const [isDragging, setIsDragging] = useState(false);
     const [user, setUser] = useState<User>({ id: "", name: "", gameCode: "", isHost: false, isActive: false, points: 0 });
+    const [usersWithoutMe, setUsersWithoutMe] = useState<User[]>([]);
     const [game, setGame] = useState<Game>({ code: "", hasStarted: false, maxPlayers: 0, minPoints: 0 });
     const navigate = useNavigate();
     const socket = useContext(SocketContext);
@@ -46,6 +48,7 @@ const GameBoard = () => {
 
         socket.emit("dropCardInTimeline", { index });
         socket.emit("user");
+        socket.emit("usersInGameExcludeUser");
 
         setPickedCard(null);
 
@@ -62,6 +65,8 @@ const GameBoard = () => {
         socket.emit("game");
 
         socket.emit("cardsTimeline");
+
+        socket.emit("usersInGameExcludeUser");
 
         socket.on("pickCard", (card: Omit<CardData, "date">) => {
             setPickedCard(card);
@@ -83,8 +88,8 @@ const GameBoard = () => {
             setGame(socketGame);
         });
 
-        socket.on("usersInGame", (users: User[]) => {
-            console.log(users);
+        socket.on("usersInGameExcludeUser", (usersInGameExcludeUser: User[]) => {
+            setUsersWithoutMe(usersInGameExcludeUser);
         });
 
         return () => {
@@ -92,14 +97,14 @@ const GameBoard = () => {
             socket.off("cardsTimeline");
             socket.off("endGame");
             socket.off("user");
-            socket.off("usersInGame");
+            socket.off("usersInGameExcludeUser");
         };
     }, [navigate]);
 
     return (
         <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd} modifiers={[restrictToWindowEdges]}>
             <div className="bg-mainBlue h-screen text-white pt-5 flex flex-col gap-5 items-center">
-                {/*<PlayersList playersData={playersData} />*/}
+                <PlayersList users={usersWithoutMe} />
                 <Timeline
                     cardsData={cards}
                     isDragging={isDragging}
@@ -109,6 +114,13 @@ const GameBoard = () => {
                     <Player user={user} card={pickedCard} game={game} />
                     <Pick onPick={handlePick} />
                 </div>
+
+                {user.isActive && (
+                    <div>
+                        <h2 className="text-center text-2xl font-bold">C'est à votre tour !</h2>
+                        <p className="text-center text-lg">Glissez et déposez votre carte sur la timeline.</p>
+                    </div>
+                )}
 
                 <Link to="/" className="btn btn-danger absolute bottom-5 left-5">
                     Quitter

@@ -248,6 +248,13 @@ io.on('connection', socket => {
     socket.emit('usersInGame', user.getAllInGame(existingUser.gameCode));
   })
 
+  socket.on('usersInGameExcludeUser', () => {
+    const existingUser = user.getOne(socket.id);
+    if (!existingUser) return;
+
+    socket.emit('usersInGameExcludeUser', user.getAllInGame(existingUser.gameCode).filter(user => user.id !== existingUser.id));
+  });
+
   socket.on('game', () => {
     const existingGame = user.getGame(socket.id);
     if (!existingGame) return;
