@@ -17,6 +17,7 @@ export type User = {
     name: string;
     gameCode: string;
     isHost: boolean;
+    isActive: boolean;
     points: number;
 }
 
@@ -29,5 +30,5 @@ export type Game = {
 export type PlayerData = {
     points: number;
     name: string;
-    card?: CardData | null;
+    card?: Omit<CardData, "date"> | null;
 }

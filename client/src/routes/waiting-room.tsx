@@ -7,7 +7,7 @@ import {socket} from "../socket.ts";
 
 const WaitingRoom = () => {
     const [users, setUsers] = useState<User[]>([]);
-    const [user, setUser] = useState<User>({ id: "", name: "", gameCode: "", isHost: false, points: 0 });
+    const [user, setUser] = useState<User>({ id: "", name: "", gameCode: "", isHost: false, isActive: false, points: 0 });
     const [game, setGame] = useState<Game>({ code: "", hasStarted: false, maxPlayers: 0 });
     const navigate = useNavigate();
 

@@ -2,7 +2,7 @@ import { CardData } from "../types.ts";
 
 interface FrontCardProps {
     onClick: () => void;
-    data?: CardData;
+    data: CardData|Omit<CardData, "date">;
 }
 
 const FrontCard = ({ onClick, data }: FrontCardProps) => {
@@ -15,9 +15,11 @@ const FrontCard = ({ onClick, data }: FrontCardProps) => {
             <hr className="border-3 border-cream2 w-full" />
             <div className="w-full h-full p-2">
                 <div className="flex flex-col gap-2 items-center h-full">
-                    <p className="bg-darkRed w-[55%] text-center rounded-xl text-sm font-medium py-2">
-                        {data?.date}
-                    </p>
+                    {"date" in data && data.date &&
+                        <p className="bg-darkRed w-[55%] text-center rounded-xl text-sm font-medium py-2">
+                            {data.date}
+                        </p>
+                    }
 
                     <div className="w-[92%] bg-lightBlue text-center rounded-xl pt-2 pb-1 px-1">
                         <h3 className="text-sm font-bold break-words">{data?.title}</h3>

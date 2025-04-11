@@ -165,16 +165,15 @@ io.on('connection', socket => {
     });
   })
 
-  socket.on('dropCardInTimeline', ({ leftCardId, rightCardId }: { leftCardId?: number, rightCardId?: number }) => {
+  socket.on('dropCardInTimeline', ({ index }: { index: number }) => {
     const existingUser = user.getOne(socket.id);
-    if (!existingUser || (!leftCardId && !rightCardId)) return;
+    if (!existingUser) return;
 
     const activeUser = game.getActiveUser(existingUser.gameCode);
     if (!activeUser || existingUser.id !== activeUser.id) return;
 
     const gameUtils = gamesUtils.getOne(activeUser.gameCode);
-    const leftCard = leftCardId ? cards.getOne(leftCardId) : undefined;
-    const rightCard = rightCardId ? cards.getOne(rightCardId) : undefined;
+    const { leftCard, rightCard } = gamesUtils.getCardsAroundActive(activeUser.gameCode, index)!;
     if (!gameUtils || !gameUtils.activeCard || (!leftCard && !rightCard)) return;
 
     if (cards.isRightDate(gameUtils.activeCard, leftCard, rightCard)) {
@@ -192,6 +191,29 @@ io.on('connection', socket => {
     game.setNextActiveUser(existingUser.gameCode);
     io.to(existingUser.gameCode).emit('usersInGame', user.getAllInGame(existingUser.gameCode));
     io.to(existingUser.gameCode).emit('cardsTimeline', gamesUtils.getTimeline(existingUser.gameCode));
+  })
+
+  socket.on('cardsTimeline', () => {
+    const existingUser = user.getOne(socket.id);
+    if (!existingUser) return;
+
+    const timeline = gamesUtils.getTimeline(existingUser.gameCode);
+    if (!timeline) return;
+
+    socket.emit('cardsTimeline', timeline);
+  })
+
+  socket.on('pickCard', () => {
+    const existingUser = user.getOne(socket.id);
+    if (!existingUser) return;
+
+    const activeUser = game.getActiveUser(existingUser.gameCode);
+    if (!activeUser || existingUser.id !== activeUser.id) return;
+
+    const gameUtils = gamesUtils.getOne(activeUser.gameCode);
+    if (!gameUtils || gameUtils.activeCard) return;
+
+    socket.emit('pickCard', gamesUtils.pickCard(existingUser.gameCode));
   })
 
   socket.on('winner', () => {
