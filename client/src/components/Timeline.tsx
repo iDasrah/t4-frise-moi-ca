@@ -60,7 +60,7 @@ export default function Timeline({ cardsData, isDragging }: TimelineProps) {
 
     return (
         <div className="w-[95vw] flex flex-col items-center justify-center">
-            <div className="w-full flex gap-5 items-center overflow-x-scroll p-3 border-2 border-black rounded-xl bg-cream min-h-[180px]">
+            <div className="w-full h-80 flex gap-5 items-center overflow-x-scroll p-3 border-2 border-black rounded-xl bg-cream min-h-[180px]">
                 {cardsData.map((card, index) => (
                     <div
                         key={`wrapper-${index}`}
