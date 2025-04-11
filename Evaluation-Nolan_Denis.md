@@ -34,7 +34,7 @@ Les étapes du projet tuteuré T2 sont les suivantes :
 - avoir un indicateur pour savoir a qui est le tour de jouer
 - régler les différent bug d'affichage si ont veux déplacer la carte sur les bords
 - si quelqu'un quite la partie elle ne peut continuer, sont tour sera attendue a l'infinie
-- certain des fonctionnalités prévue ne fonctionne pas
+- certain des fonctionnalités prévue ne sont pas implémenter, du moins ne sont pas préciser comme pas implémenter dans le cahier des charges
 
 ## Grille d'évaluation T2 (à remplir par les membres du groupe T4)
 
