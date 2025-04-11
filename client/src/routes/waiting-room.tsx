@@ -106,7 +106,7 @@ const WaitingRoom = () => {
                         </div>
                         <QRCode
                             size={256}
-                            value={gameCode || ""}
+                            value={`https://t4-frise-moi-ca.vercel.app/join-game?code=${gameCode}`}
                             viewBox={`0 0 256 256`}
                             className="shadow-md rounded-lg"
                         />
