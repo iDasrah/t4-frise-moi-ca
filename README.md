@@ -130,10 +130,7 @@ Chaque carte a deux faces :
 ### Scénarios
 
 - Parties à nombre de joueurs variable (jusqu'à 10).
-- Victoires à différents nombres de points :
-  - Partie rapide (5 points).
-  - Partie normale (10 points).
-  - Partie longue (15 points).
+- Victoires à différents nombres de points (le joueur peut choisir).
 
 ### Contraintes de développement
 
