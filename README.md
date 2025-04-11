@@ -80,12 +80,6 @@ Chaque carte a deux faces :
   * type
   * description
 
-#### Gestion des parties en ligne
-
-- Les joueurs doivent pouvoir jouer à partir de n'importe quel ordinateur disposant d'une connexion internet
-- Plusieurs parties peuvent se jouer en même temps
-- Jusqu'à 10 joueurs peuvent jouer dans la même partie
-
 #### Interface
 Éléments qui composent l'interface :
 - Écran d'accueil avec choix entre créer et rejoindre une partie
@@ -97,13 +91,19 @@ Chaque carte a deux faces :
   - La carte du joueur actuel, avec son nom et ses points
   - Les noms et les points des autres joueurs
   - Un bouton Quitter
-- Écran de fin
+- Écran de fin avec :
+  - Boutons pour revenir menu ou bien de relancer une partie
+  - Podium affichant les statistiques des trois premiers joueurs
 
 #### Actions du joueur
 
 Écran d'accueil :
-- Créer une partie
-- Rejoindre une partie
+- Créer une partie privée ou publique
+- Rejoindre une partie privée ou publique
+
+Salle d'attente :
+- Quitter la salle d'attente
+- Lancer la partie
 
 Écran de jeu :
 - Piocher une carte
@@ -114,6 +114,21 @@ Chaque carte a deux faces :
 - Revenir à l'écran d'accueil
 - Créer une nouvelle partie
 
+#### Gestion des parties en ligne
+
+- Les joueurs doivent pouvoir jouer à partir de n'importe quel ordinateur disposant d'une connexion internet
+- Plusieurs parties peuvent se jouer en même temps
+- Jusqu'à 10 joueurs peuvent jouer dans la même partie
+- Possibilité de créer des parties publiques ou privées
+- Les parties privées doivent être protégées par un mot de passe ou un code unique.
+- Ajout d'un mode spectateur pour permettre à des utilisateurs de suivre une partie en cours.
+- Intégration d'un chat en ligne pour permettre aux joueurs de communiquer pendant la partie.
+
+#### Accessibilité
+
+Le jeu doit être compatible avec les navigateurs modernes (Chrome, Firefox, Edge, Safari).
+Le jeu doit être responsive et fonctionner sur mobile, tablette et ordinateur.
+
 ### Scénarios
 
 - Parties à nombre de joueurs variable (jusqu'à 10)
@@ -122,6 +137,7 @@ Chaque carte a deux faces :
 ### Contraintes de développement
 
 - Code modularisé
+- Le code doit être documenté pour faciliter la maintenance.
 
 ### Fonctionnalités et scénarios avancés
 
