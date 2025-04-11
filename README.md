@@ -3,24 +3,37 @@
 - Nom du groupe : Bate Munster
 - Membres du groupe : Picouleau Mathéo, Schwob Lucien, Kieffer Baptiste, Lamorlette Maxime
 - Liens vers les évaluations T4 :
-  - lien 1
-  - lien 2
-  - ...
+  - [Évaluation de Léo Lienhard](Evaluation-Leo_Lienhard.md)
+  - [Évaluation de Mehdi Bentaibi](Evaluation-Mehdi_Bentaibi.md)
+  - [Évaluation de Noah Dumangin](Evaluation-Noah_Dumangin.md)
+  - [Évaluation de Nolan Denis](Evaluation-Nolan_Denis.md)
+  - [Évaluation de Thomas Barseghian](Evaluation-Thomas_Barseghian.md)
+  - [Évaluation T4](Evaluation-T4.md)
 
 ## Instructions de fork :
 
-- forker ce dépôt
+- forker ce dépôt avec le bouton en haut à droite
 - le nommer du code complet du groupe T4
 - ajouter le lien dans le doc des groupes
 - supprimer les instructions de fork du README.md
 
 ## Présentation du projet
 
-FriseServicePublic est un jeu web pédagogique où les joueurs doivent replacer des cartes historiques de services publics dans une frise chronologique.
+"Frise-Moi-ça !" est un jeu web pédagogique où l'objectif du jeu est de construire une frise historique des services publics en plaçant correctement des cartes dans l'ordre chronologique.
 
-### Captures d'écran
+Le premier joueur à atteindre le nombre de points requis gagne la partie.
+
+### Captures d'écran :
+
+![Écran de jeu](/image/image_ecran_home.png)
+![Écran d'accueil](/image/image_ecran_create.png)
+![Écran de fin](/image/image_waiting_room.png)
+![Écran de fin](/image/image_ecran_de_fin.png)
+
 
 ### Procédures d'installation et d'exécution
+
+Il suffit simplement de se rendre sur ce lien : https://t4-frise-moi-ca.vercel.app/
 
 ## Cahier des charges
 
