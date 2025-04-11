@@ -27,12 +27,15 @@ Les étapes du projet tuteuré T2 sont les suivantes :
 # Propositions d'amélioration du cahier des charges
 
 - cahier des charges clair, peut être revoire la formulation des phrases
-- Proposition 2
+- pas de références, donc aucun moyen de savoir de ou leur informations vienne
 
 # Propositions d'amélioration du jeu
 
-- avoir un indicateur pour savoir a qui est le tour de jouer
-- Proposition 2
+- avoir un indicateur pour savoir a qui est le tour de jouer et un si ont a mis la carte au bon endroit
+- régler les différent bug d'affichage si ont veux déplacer la carte sur les bords
+- si quelqu'un quite la partie elle ne peut continuer, sont tour sera attendue a l'infinie
+- certain des fonctionnalités prévue ne sont pas implémenter, du moins ne sont pas préciser comme pas implémenter dans le cahier des charges
+- avoir une limite de temps pour sont tour (pourais régler le probleme de tour si quelqu'un quite)
 
 ## Grille d'évaluation T2 (à remplir par les membres du groupe T4)
 
@@ -149,39 +152,39 @@ Autres justifications :
 Pour un exemple de ce qui est attenu, voir https://gitlab.unistra.fr/T234/t4-exemple
 
 - Objectifs pédagogiques
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Objectifs pédagogiques avancés 
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Références
   - [ ] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
-  - [ ] Cette partie n'est pas informative.
+  - [x] Cette partie n'est pas informative.
 - Description des fonctionnalités (hors interface et actions)
   - [ ] Cette partie est informative et correspond au style de l'exemple.
-  - [ ] Cette partie est informative.
+  - [x] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Interface
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Actions du joueur
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Scénarios
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Contraintes de développement
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Fonctionnalités et scénarios avancés
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 
@@ -190,4 +193,4 @@ Pour un exemple de ce qui est attenu, voir https://gitlab.unistra.fr/T234/t4-exe
 - Total d'item « Excellent » (2 point) : 
 - Total d'item « Satisfaisant » (1 point) : 
 - Total d'item « Insatisfaisant » (0 point) :
-- total des points (sur 50) :
+- total des points (sur 50) : 35
