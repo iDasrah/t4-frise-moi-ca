@@ -5,6 +5,7 @@ import {SocketContext} from "./SocketContext.tsx";
 const CreateGame = () => {
     const [username, setUsername] = useState('');
     const [maxPlayers, setMaxPlayers] = useState(2);
+    const [minPoints, setMinPoints] = useState(5);
     const navigate = useNavigate();
     const socket = useContext(SocketContext);
 
@@ -12,7 +13,8 @@ const CreateGame = () => {
         event.preventDefault();
         socket.emit('createGame', {
             username,
-            maxPlayers
+            maxPlayers,
+            minPoints
         });
     }
 
@@ -47,6 +49,15 @@ const CreateGame = () => {
                        placeholder="Nombre de joueurs maximum"
                        min={2}
                        max={10}
+                />
+                <label htmlFor="points">Nombre de points pour gagner</label>
+                <input className="input-field" type="number" name="points" id="points"
+                       value={minPoints}
+                       onChange={(e) => setMinPoints(Number(e.target.value))}
+                       placeholder="Nombre de points pour gagner"
+                       min={5}
+                       max={15}
+
                 />
                 <button className="btn btn-primary" type="submit">Créer une partie</button>
             </form>

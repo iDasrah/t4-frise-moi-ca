@@ -8,7 +8,7 @@ import {SocketContext} from "../components/SocketContext.tsx";
 const WaitingRoom = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [user, setUser] = useState<User>({ id: "", name: "", gameCode: "", isHost: false, isActive: false, points: 0 });
-    const [game, setGame] = useState<Game>({ code: "", hasStarted: false, maxPlayers: 0 });
+    const [game, setGame] = useState<Game>({ code: "", hasStarted: false, maxPlayers: 0, minPoints: 0 });
     const navigate = useNavigate();
     const socket = useContext(SocketContext);
 

@@ -81,7 +81,15 @@ export function pickCard(gameCode: string) {
 export function getCardsAroundActive(gameCode: string, index: number) {
     const gameUtils = getOne(gameCode);
     if (!gameUtils) return undefined;
-    const leftCard = index > 0 ? gameUtils.timeline[index - 1] : undefined;
-    const rightCard = index < gameUtils.timeline.length - 1 ? gameUtils.timeline[index + 1] : undefined;
+    let leftCard = index > 0 ? gameUtils.timeline[index - 1] : undefined;
+    let rightCard = index < gameUtils.timeline.length - 1 ? gameUtils.timeline[index + 1] : undefined;
+    if (index === 0) {
+        leftCard = undefined;
+        rightCard = gameUtils.timeline[0];
+    }
+    if (index === gameUtils.timeline.length - 1) {
+        leftCard = gameUtils.timeline[gameUtils.timeline.length - 1];
+        rightCard = undefined;
+    }
     return { leftCard, rightCard };
 }
