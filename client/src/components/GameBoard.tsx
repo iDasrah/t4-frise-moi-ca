@@ -12,8 +12,8 @@ import {SocketContext} from "./SocketContext.tsx";
 import PlayersList from "./PlayersList.tsx";
 
 const GameBoard = () => {
-    const [pickedCard, setPickedCard] = useState<Omit<CardData, "date"> | null>(null);
-    const [cards, setCards] = useState<(CardData|Omit<CardData, "date">)[]>([]);
+    const [pickedCard, setPickedCard] = useState<Omit<CardData, "textDate"> | null>(null);
+    const [cards, setCards] = useState<(CardData|Omit<CardData, "textDate">)[]>([]);
     const [isDragging, setIsDragging] = useState(false);
     const [user, setUser] = useState<User>({ id: "", name: "", gameCode: "", isHost: false, isActive: false, points: 0 });
     const [usersWithoutMe, setUsersWithoutMe] = useState<User[]>([]);
@@ -41,7 +41,7 @@ const GameBoard = () => {
         }
     };
 
-    const handleDrop = (card: Omit<CardData, "date">, index: number) => {
+    const handleDrop = (card: Omit<CardData, "textDate">, index: number) => {
         const updated = [...cards];
         updated.splice(index, 0, card);
         setCards(updated);
@@ -68,12 +68,13 @@ const GameBoard = () => {
 
         socket.emit("usersInGameExcludeUser");
 
-        socket.on("pickCard", (card: Omit<CardData, "date">) => {
+        socket.on("pickCard", (card: Omit<CardData, "textDate">) => {
             setPickedCard(card);
         });
 
-        socket.on("cardsTimeline", (cards: (CardData | Omit<CardData, "date">)[]) => {
+        socket.on("cardsTimeline", (cards: (CardData | Omit<CardData, "textDate">)[]) => {
             setCards(cards);
+            socket.emit("usersInGameExcludeUser");
         });
 
         socket.on("endGame", () => {

@@ -75,7 +75,7 @@ export function pickCard(gameCode: string) {
         ...GamesUtilsState.gamesUtils.filter(game => game.gameCode !== gameCode),
         {...gameUtils, activeCard: card, deck: gameUtils.deck.slice(1)}
     ]);
-    return card;
+    return { ...card, textDate: undefined, dates: undefined };
 }
 
 export function getCardsAroundActive(gameCode: string, index: number) {
@@ -87,7 +87,7 @@ export function getCardsAroundActive(gameCode: string, index: number) {
         leftCard = undefined;
         rightCard = gameUtils.timeline[0];
     }
-    if (index === gameUtils.timeline.length - 1) {
+    if (index === gameUtils.timeline.length) {
         leftCard = gameUtils.timeline[gameUtils.timeline.length - 1];
         rightCard = undefined;
     }

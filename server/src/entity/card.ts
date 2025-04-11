@@ -8,11 +8,11 @@ export function isRightDate(activeCard: Card, leftCard?: Card, rightCard?: Card)
     if (!leftCard && !rightCard) return false;
 
     if (rightCard) {
-        if (activeCard.dates[0] > rightCard.dates[0]) return false;
+        if (activeCard.dates[0].getTime() > rightCard.dates[0].getTime()) return false;
     }
 
     if (leftCard) {
-        if (activeCard.dates[0] < leftCard.dates[0]) return false;
+        if (activeCard.dates[0].getTime() < leftCard.dates[0].getTime()) return false;
     }
     return true;
 }

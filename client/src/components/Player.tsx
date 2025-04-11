@@ -5,7 +5,7 @@ import {Crown, Star} from "lucide-react";
 interface PlayerProps {
     user: User;
     game: Game;
-    card: Omit<CardData, "date"> | null;
+    card: Omit<CardData, "textDate"> | null;
 }
 
 export default function Player({ card, user, game } : PlayerProps) {

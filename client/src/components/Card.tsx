@@ -4,7 +4,7 @@ import BackCard from "./BackCard.tsx";
 import { CardData, CardSide } from "../types.ts";
 
 interface CardProps {
-    data?: CardData|Omit<CardData, "date">;
+    data?: CardData|Omit<CardData, "textDate">;
     initialSide: CardSide;
     turnable?: boolean;
 }

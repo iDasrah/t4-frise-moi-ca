@@ -2,10 +2,11 @@ import { CardData } from "../types.ts";
 
 interface FrontCardProps {
     onClick: () => void;
-    data?: CardData|Omit<CardData, "date">;
+    data?: CardData|Omit<CardData, "textDate">;
 }
 
 const FrontCard = ({ onClick, data }: FrontCardProps) => {
+    console.log("FrontCard data", data);
     return (
         <div
             className="card front w-full h-full rounded-lg overflow-hidden cursor-pointer"
@@ -15,9 +16,9 @@ const FrontCard = ({ onClick, data }: FrontCardProps) => {
             <hr className="border-3 border-cream2 w-full" />
             <div className="w-full h-full p-2">
                 <div className="flex flex-col gap-2 items-center h-full">
-                    {data && "date" in data && data.date &&
+                    {data && "textDate" in data && data.textDate &&
                         <p className="bg-darkRed w-[55%] text-center rounded-xl text-sm font-medium py-2">
-                            {data.date}
+                            {data.textDate}
                         </p>
                     }
 

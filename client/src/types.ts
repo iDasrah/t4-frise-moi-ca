@@ -4,7 +4,7 @@ export type CardData = {
     type: string;
     thematic: string;
     description: string;
-    date: string;
+    textDate: string;
 }
 
 export enum CardSide {

@@ -3,7 +3,7 @@ import { CardData, CardSide } from "../types";
 import Card from "./Card";
 
 interface DraggableCardProps {
-    data: Omit<CardData, "date">;
+    data: Omit<CardData, "textDate">;
 }
 
 export default function DraggableCard({ data }: DraggableCardProps) {

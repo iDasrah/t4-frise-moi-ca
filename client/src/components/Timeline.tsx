@@ -5,7 +5,7 @@ import {useEffect, useRef, useState} from "react";
 
 
 interface TimelineProps {
-    cardsData: (CardData|Omit<CardData, "date">)[];
+    cardsData: (CardData|Omit<CardData, "textDate">)[];
     isDragging: boolean;
 }
 
