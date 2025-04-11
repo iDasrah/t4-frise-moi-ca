@@ -26,20 +26,50 @@ Les étapes du projet tuteuré T2 sont les suivantes :
 
 # Propositions d'amélioration du cahier des charges
 
-- Proposition 1
-- Proposition 2
+- Certaine phrase sont floue"Le temps de l'éducation n'est pas le temps du politique."
+pourrait devenir :
+"Les effets des politiques éducatives se manifestent sur le long terme, souvent au-delà du mandat politique classique."
+
+- Une capture d'écran sur le jeu en lui même est manquant.
+
+- Comment le joueur voit-il les effets de ses décisions ? Animation, surbrillance, statistiques comparées?
+
+- Trop denses en un seul bloc. À diviser par thème.
+
+- Ajouter schéma d’architecture ou info sur techno utilisée.
 
 # Propositions d'amélioration du jeu
 
-- Proposition 1
-- Proposition 2
+- L’élément de pioche n’est pas très intuitif : il faudrait afficher la carte automatiquement lorsqu’un joueur doit jouer.
+
+- Afficher le nombre de tours restants et indiquer clairement quel joueur doit jouer.
+
+- Ajouter davantage d’éléments sur les cartes pour les rendre plus compréhensibles.
+
+- Afficher la frise de manière responsive, en fonction du nombre de cartes ou regler l'affichage des cartes qui n'est pas claire.
+
+-Permettre de connaître l’ordre des cartes jouées.
+
+- Indiquer si la réponse donnée est correcte ou non.
+
+- Définir un nombre maximum de tours.
+
+- Ajouter un champ pour saisir le nombre de joueurs.
+
+- Corriger les bugs d’affichage sur Chrome et sur mobile.
+
+- Résoudre le problème des cartes qui ne s’affichent pas.
+
+- Mettre en place une limite de temps pour chaque tour.
+
+
 
 ## Grille d'évaluation T2 (à remplir par les membres du groupe T4)
 
 - Procédure
   - [ ] La procédure a été suivie à la lettre sans le moindre écart.
   - [ ] La procédure a été globalement suivie.
-  - [x] La procédure n'a pas été bien suivie.
+  - [ ] La procédure n'a pas été bien suivie.
 - Propositions d'amélioration du Cahier des charges
   - [ ] Au moins cinq propositions d'améliorations pertinente sont faites.
   - [ ] Au moins cinq propositions d'améliorations sont faites.
@@ -89,17 +119,17 @@ Les étapes du projet tuteuré T2 sont les suivantes :
 
 ## GIT 
 - Organisation
-  - [ ] Les fichiers sources suivent une organisation et des règles de nommage clairement établie.
+  - [x] Les fichiers sources suivent une organisation et des règles de nommage clairement établie.
   - [ ] Les fichiers sources sont tous partagés et organisés.
-  - [x] Certains fichiers sources ne sont pas partagés ou leur organisation laisse à désirer.
+  - [ ] Certains fichiers sources ne sont pas partagés ou leur organisation laisse à désirer.
 - Versioning
-  - [ ] La granularité des commits est pertinente et les commits sont clairement et systématique renseignés.
+  - [x] La granularité des commits est pertinente et les commits sont clairement et systématique renseignés.
   - [ ] La granularité des commits n'est pas pertinente ou les commits ne sont pas clairement et systématiquement renseignés.
-  - [x] La granularité des commits n'est pas pertinente et les commits ne sont pas clairement et systématiquement renseignés.
+  - [ ] La granularité des commits n'est pas pertinente et les commits ne sont pas clairement et systématiquement renseignés.
 - Droits d'accès
-  - [ ] Julien Gossa est owner du dépôt GIT et ce dépôt est accessible à tous.
+  - [x] Julien Gossa est owner du dépôt GIT et ce dépôt est accessible à tous.
   - [ ] Julien Gossa est owner du dépôt GIT.
-  - [x] Julien Gossa n'est pas owner du dépôt GIT.
+  - [ ] Julien Gossa n'est pas owner du dépôt GIT.
 
 Justifications :
 
@@ -114,16 +144,16 @@ Justifications :
   - [x] Le prototype ne s'exécute pas
 - Stabilité
   - [ ] Le prototype est parfaitement stable
-  - [ ] Le prototype est rarement instable
-  - [x] Le prototype est instable
+  - [x] Le prototype est rarement instable
+  - [ ] Le prototype est instable
 - Affordabilité
-  - [ ] Toutes les instructions de jeu sont incluses dans le prototype au cours d'une partie normale.
+  - [x] Toutes les instructions de jeu sont incluses dans le prototype au cours d'une partie normale.
   - [ ] Les instructions de jeu sont sous forme d'un manuel ou d'un tutoriel à part.
-  - [x] Les instructions de jeu ne sont pas données.
+  - [ ] Les instructions de jeu ne sont pas données.
 - Transmission du concept
   - [ ] J'ai appris quelque chose en jouant.
-  - [ ] J'ai eu de l'intérêt en jouant, mais sans rien apprendre.
-  - [x] Je n'ai pas eu d'intérêt en jouant.
+  - [x] J'ai eu de l'intérêt en jouant, mais sans rien apprendre.
+  - [ ] Je n'ai pas eu d'intérêt en jouant.
 
 Résumer en une phrase ce que vous avez éventuellement appris :
 
@@ -132,16 +162,16 @@ Autres justifications :
 ## Présentation README.md
 
 - Présentation du projet
-  - [ ] Cette partie est informative et succincte (1 phrase).
+  - [x] Cette partie est informative et succincte (1 phrase).
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Captures d'écran
   - [ ] Plusieurs captures d'écran soignées sont données.
-  - [ ] Une capture d'écran est donnée.
+  - [x] Une capture d'écran est donnée.
   - [ ] Aucune capture d'écran n'est donnée.
 - Procédures d'installation et d'exécution
   - [ ] Cette partie est informative et succincte (1 phrase).
-  - [ ] Cette partie est informative.
+  - [x] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 
 ## Cahier des charges 
@@ -149,40 +179,40 @@ Autres justifications :
 Pour un exemple de ce qui est attenu, voir https://gitlab.unistra.fr/T234/t4-exemple
 
 - Objectifs pédagogiques
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Objectifs pédagogiques avancés 
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Références
   - [ ] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
-  - [ ] Cette partie n'est pas informative.
+  - [x] Cette partie n'est pas informative.
 - Description des fonctionnalités (hors interface et actions)
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Interface
   - [ ] Cette partie est informative et correspond au style de l'exemple.
-  - [ ] Cette partie est informative.
+  - [x] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Actions du joueur
   - [ ] Cette partie est informative et correspond au style de l'exemple.
-  - [ ] Cette partie est informative.
+  - [x] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Scénarios
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Contraintes de développement
-  - [ ] Cette partie est informative et correspond au style de l'exemple.
+  - [x] Cette partie est informative et correspond au style de l'exemple.
   - [ ] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 - Fonctionnalités et scénarios avancés
   - [ ] Cette partie est informative et correspond au style de l'exemple.
-  - [ ] Cette partie est informative.
+  - [x] Cette partie est informative.
   - [ ] Cette partie n'est pas informative.
 
 
