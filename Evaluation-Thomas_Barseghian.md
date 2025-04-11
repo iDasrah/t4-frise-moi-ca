@@ -97,9 +97,9 @@ Les étapes du projet tuteuré T2 sont les suivantes :
   - [ ] La granularité des commits n'est pas pertinente ou les commits ne sont pas clairement et systématiquement renseignés.
   - [x] La granularité des commits n'est pas pertinente et les commits ne sont pas clairement et systématiquement renseignés.
 - Droits d'accès
-  - [ ] Julien Gossa est owner du dépôt GIT et ce dépôt est accessible à tous.
+  - [x] Julien Gossa est owner du dépôt GIT et ce dépôt est accessible à tous.
   - [ ] Julien Gossa est owner du dépôt GIT.
-  - [x] Julien Gossa n'est pas owner du dépôt GIT.
+  - [ ] Julien Gossa n'est pas owner du dépôt GIT.
 
 Justifications :
 
