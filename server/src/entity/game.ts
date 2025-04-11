@@ -41,3 +41,39 @@ export function start(code: string) {
         GamesState.setGames([...GamesState.games.filter(g => g.code !== code), game]);
     }
 }
+
+export function getActiveUser(code: string) {
+    const game = getOne(code);
+    if (game) {
+        return user.getAllInGame(code).find(user => user.isActive);
+    }
+}
+
+export function setNextActiveUser(code: string) {
+    const game = getOne(code);
+    if (game) {
+        const users = user.getAllInGame(code);
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].isActive) {
+                user.updateOne(users[i].id, {isActive: false});
+                user.updateOne(users[(i + 1) % users.length].id, {isActive: true});
+            }
+        }
+    }
+}
+
+export function isGameEnded(code: string) {
+    const game = getOne(code);
+    if (game) {
+        return game.hasStarted && user.getAllInGame(code).find(user => user.points >= 7) !== undefined;
+    }
+    return false;
+}
+
+export function getWinner(code: string) {
+    const game = getOne(code);
+    if (game) {
+        return user.getAllInGame(code).find(user => user.points >= 7);
+    }
+    return null;
+}

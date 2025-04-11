@@ -5,8 +5,11 @@ import cors from 'cors';
 import { Server } from "socket.io"
 import * as user from './entity/user';
 import * as game from './entity/game';
+import * as cards from './entity/card';
+import * as gamesUtils from './entity/gamesUtils';
+import {Card} from "./types";
 import { fetchData } from './data';
-import {CardData} from "./types";
+import {isGameEnded} from "./entity/game";
 
 const app = express();
 const port = 3000;
@@ -101,17 +104,26 @@ io.on('connection', socket => {
       return;
     }
 
-    if (game.getAll().length === 1) {
-        const data: CardData[] = await fetchData();
-    }
-
     game.activate(gameCode, maxPlayers);
     user.activate(socket.id, username, gameCode, true);
     socket.join(gameCode);
+
+    if (game.getAll().length === 1) {
+      fetchData().then(
+        (data: Card[]) => {
+          cards.fill(data);
+        }
+      );
+    }
+
     io.to(gameCode).emit('createGame', {
       error: false,
       gameCode
     });
+  })
+
+  socket.on('data', () => {
+    socket.emit('data', cards.getAll());
   })
 
   socket.on('startGame', () => {
@@ -142,11 +154,54 @@ io.on('connection', socket => {
       return;
     }
     game.start(existingUser.gameCode);
+    gamesUtils.fill(existingUser.gameCode);
+    gamesUtils.shuffle(existingUser.gameCode);
+    gamesUtils.pickCard(existingUser.gameCode);
+    gamesUtils.moveActiveCardInTimeline(existingUser.gameCode);
 
     io.to(existingUser.gameCode).emit('startGame', {
       error: false,
       message: 'Game has started'
     });
+  })
+
+  socket.on('dropCardInTimeline', ({ leftCardId, rightCardId }: { leftCardId?: number, rightCardId?: number }) => {
+    const existingUser = user.getOne(socket.id);
+    if (!existingUser || (!leftCardId && !rightCardId)) return;
+
+    const activeUser = game.getActiveUser(existingUser.gameCode);
+    if (!activeUser || existingUser.id !== activeUser.id) return;
+
+    const gameUtils = gamesUtils.getOne(activeUser.gameCode);
+    const leftCard = leftCardId ? cards.getOne(leftCardId) : undefined;
+    const rightCard = rightCardId ? cards.getOne(rightCardId) : undefined;
+    if (!gameUtils || !gameUtils.activeCard || (!leftCard && !rightCard)) return;
+
+    if (cards.isRightDate(gameUtils.activeCard, leftCard, rightCard)) {
+      user.updateOne(existingUser.id, { points: existingUser.points + 1 });
+      socket.to(existingUser.gameCode).emit('message', `${existingUser.name} has scored a point!`);
+      socket.emit('message', 'You have scored a point!');
+    }
+
+    gamesUtils.moveActiveCardInTimeline(existingUser.gameCode);
+    if (isGameEnded(existingUser.gameCode)) {
+      io.to(existingUser.gameCode).emit('endGame');
+      game.deleteOne(existingUser.gameCode);
+      return;
+    }
+    game.setNextActiveUser(existingUser.gameCode);
+    io.to(existingUser.gameCode).emit('usersInGame', user.getAllInGame(existingUser.gameCode));
+    io.to(existingUser.gameCode).emit('cardsTimeline', gamesUtils.getTimeline(existingUser.gameCode));
+  })
+
+  socket.on('winner', () => {
+    const existingUser = user.getOne(socket.id);
+    if (!existingUser) return;
+
+    const winner = game.getWinner(existingUser.gameCode);
+    if (!winner) return;
+
+    socket.emit('winner', winner);
   })
 
   socket.on('usersInGame', () => {
