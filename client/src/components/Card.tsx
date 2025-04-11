@@ -4,7 +4,7 @@ import BackCard from "./BackCard.tsx";
 import { CardData, CardSide } from "../types.ts";
 
 interface CardProps {
-    data: CardData|Omit<CardData, "date">;
+    data?: CardData|Omit<CardData, "date">;
     initialSide: CardSide;
     turnable?: boolean;
 }
@@ -40,7 +40,7 @@ const Card = ({ data, initialSide, turnable }: CardProps) => {
                 {side === CardSide.FRONT ? (
                     <FrontCard data={data} onClick={handleClick} />
                 ) : (
-                    <BackCard data={data} onClick={handleClick} />
+                    <BackCard />
                 )}
             </div>
         </div>
