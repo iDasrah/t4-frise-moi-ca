@@ -104,7 +104,7 @@ Les étapes du projet tuteuré T2 sont les suivantes :
   - [ ] Julien Gossa est owner du dépôt GIT.
   - [ ] Julien Gossa n'est pas owner du dépôt GIT.
 
-Justifications :
+Justifications : tout les fichier et commentaire des commits sont corectement nomé et compréhensible
 
 ## Prototype
 - Installation
@@ -130,7 +130,7 @@ Justifications :
 
 Résumer en une phrase ce que vous avez éventuellement appris : l'ordre de la création de certain service publique
 
-Autres justifications :
+Autres justifications : 
 
 ## Présentation README.md
 
