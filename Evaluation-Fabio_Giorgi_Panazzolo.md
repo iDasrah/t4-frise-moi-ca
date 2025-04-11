@@ -69,7 +69,7 @@ pourrait devenir :
 - Procédure
   - [ ] La procédure a été suivie à la lettre sans le moindre écart.
   - [ ] La procédure a été globalement suivie.
-  - [x] La procédure n'a pas été bien suivie.
+  - [ ] La procédure n'a pas été bien suivie.
 - Propositions d'amélioration du Cahier des charges
   - [ ] Au moins cinq propositions d'améliorations pertinente sont faites.
   - [ ] Au moins cinq propositions d'améliorations sont faites.
@@ -119,17 +119,17 @@ pourrait devenir :
 
 ## GIT 
 - Organisation
-  - [ ] Les fichiers sources suivent une organisation et des règles de nommage clairement établie.
+  - [x] Les fichiers sources suivent une organisation et des règles de nommage clairement établie.
   - [ ] Les fichiers sources sont tous partagés et organisés.
-  - [x] Certains fichiers sources ne sont pas partagés ou leur organisation laisse à désirer.
+  - [ ] Certains fichiers sources ne sont pas partagés ou leur organisation laisse à désirer.
 - Versioning
-  - [ ] La granularité des commits est pertinente et les commits sont clairement et systématique renseignés.
+  - [x] La granularité des commits est pertinente et les commits sont clairement et systématique renseignés.
   - [ ] La granularité des commits n'est pas pertinente ou les commits ne sont pas clairement et systématiquement renseignés.
-  - [x] La granularité des commits n'est pas pertinente et les commits ne sont pas clairement et systématiquement renseignés.
+  - [ ] La granularité des commits n'est pas pertinente et les commits ne sont pas clairement et systématiquement renseignés.
 - Droits d'accès
-  - [ ] Julien Gossa est owner du dépôt GIT et ce dépôt est accessible à tous.
+  - [x] Julien Gossa est owner du dépôt GIT et ce dépôt est accessible à tous.
   - [ ] Julien Gossa est owner du dépôt GIT.
-  - [x] Julien Gossa n'est pas owner du dépôt GIT.
+  - [ ] Julien Gossa n'est pas owner du dépôt GIT.
 
 Justifications :
 
@@ -144,16 +144,16 @@ Justifications :
   - [x] Le prototype ne s'exécute pas
 - Stabilité
   - [ ] Le prototype est parfaitement stable
-  - [ ] Le prototype est rarement instable
-  - [x] Le prototype est instable
+  - [x] Le prototype est rarement instable
+  - [ ] Le prototype est instable
 - Affordabilité
-  - [ ] Toutes les instructions de jeu sont incluses dans le prototype au cours d'une partie normale.
+  - [x] Toutes les instructions de jeu sont incluses dans le prototype au cours d'une partie normale.
   - [ ] Les instructions de jeu sont sous forme d'un manuel ou d'un tutoriel à part.
-  - [x] Les instructions de jeu ne sont pas données.
+  - [ ] Les instructions de jeu ne sont pas données.
 - Transmission du concept
   - [ ] J'ai appris quelque chose en jouant.
-  - [ ] J'ai eu de l'intérêt en jouant, mais sans rien apprendre.
-  - [x] Je n'ai pas eu d'intérêt en jouant.
+  - [x] J'ai eu de l'intérêt en jouant, mais sans rien apprendre.
+  - [ ] Je n'ai pas eu d'intérêt en jouant.
 
 Résumer en une phrase ce que vous avez éventuellement appris :
 
