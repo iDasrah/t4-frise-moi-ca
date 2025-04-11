@@ -60,52 +60,59 @@ const WaitingRoom = () => {
     }, [gameCode, navigate]);
 
     return (
-        <div className="w-screen h-screen flex flex-col items-center justify-center bg-gray-800 text-white pt-3">
-            <h2 className="text-white font-bold italic text-4xl mb-6">Waiting Room :</h2>
+        <div className="w-screen h-screen flex flex-col items-center justify-center bg-gray-800 text-white p-3">
+            <h2 className="text-white font-bold text-4xl">Salle d'attente</h2>
+            <div className="w-full h-full flex flex-row gap-8 p-4">
+                <div className="flex justify-between flex-col bg-gray-300 text-black p-6 rounded-lg w-1/4">
+                    <div>
+                        <h3 className="font-bold text-xl mb-3">Liste des joueurs ({users.length}/{game.maxPlayers})</h3>
+                        <ul className="italic space-y-2 text-lg">
+                            {users.map((user, index) => (
+                                <li key={index} className="flex items-center">
+                                    <div className={"flex gap-2 items-center"}>
+                                        <span className="font-semibold">{user.name}</span>
+                                        {user.isHost && <Crown color="#fdc700" className={"fill-yellow-400"} />}
+                                    </div>
 
-            <div className="w-full h-full flex flex-row gap-8 p-8 bg-gray-700 rounded-xl shadow-lg">
-                <div className="bg-gray-300 text-black p-6 rounded-lg border-2 border-black w-1/4">
-                    <h3 className="font-bold text-xl mb-3">Joueurs {users.length}/{game.maxPlayers}</h3>
-                    <ul className="italic space-y-2 text-lg">
-                        {users.map((user, index) => (
-                            <li key={index} className="flex items-center">
-                                <div className={"flex gap-2 items-center"}>
-                                    <span className="font-semibold">{user.name}</span>
-                                    {user.isHost && <Crown color="#fdc700" className={"fill-yellow-400"} />}
-                                </div>
+                                </li>
+                            ))}
+                            {users.length < game.maxPlayers && (
+                                <li className="italic text-gray-500">En attente de joueurs...</li>
+                            )}
+                        </ul>
+                    </div>
 
-                            </li>
-                        ))}
-                        {users.length < game.maxPlayers && (
-                            <li className="italic text-gray-500">En attente de joueurs...</li>
+                    <div className="flex flex-col gap-2">
+                        {users.length > 1 && !game.hasStarted && user.isHost && (
+                            <button
+                                className="btn btn-primary mt-4"
+                                onClick={handleStartGame}
+                            >
+                                Démarrer la partie
+                            </button>
                         )}
-
-                    </ul>
-                    {users.length > 1 && !game.hasStarted && user.isHost && (
                         <button
-                            className="btn btn-primary mt-4"
-                            onClick={handleStartGame}
-                        >
-                            Démarrer la partie
-                        </button>
-                    )}
-                    <button
-                        className="btn btn-secondary mt-4"
-                        onClick={handleLeaveGame}
-                    >Quitter</button>
+                            className="btn btn-danger"
+                            onClick={handleLeaveGame}
+                        >Quitter</button>
+                    </div>
                 </div>
 
-                <div className="bg-gray-300 text-black p-6 rounded-lg flex flex-col justify-start w-3/4">
-                    <div className="h-10 border border-black rounded-md flex items-center justify-center text-lg">
-                        <span className="italic font-semibold">Réglages :</span>
-                    </div>
-                    <QRCode
-                        size={256}
-                        value={gameCode || ""}
-                        viewBox={`0 0 256 256`}
-                    />
-                    <div className="italic font-semibold pt-4 text-center text-lg">
-                        Code room : <span className="text-gray-800">{gameCode}</span>
+                <div className="bg-gray-300 text-black p-6 rounded-lg flex flex-col justify-start items-center w-3/4">
+                    <h3 className="w-full font-bold text-xl mb-3 border-black border-b-2">Invitation</h3>
+                    <div className="h-full flex flex-col items-center justify-center gap-4">
+                        <div className="font-semibold text-center text-lg">
+                            <p>Code de la partie: {gameCode}</p>
+                        </div>
+                        <QRCode
+                            size={256}
+                            value={gameCode || ""}
+                            viewBox={`0 0 256 256`}
+                            className="shadow-md rounded-lg"
+                        />
+                        <div className="font-semibold text-center text-lg">
+                            <p>Scannez le QR code pour rejoindre la partie !</p>
+                        </div>
                     </div>
                 </div>
             </div>
