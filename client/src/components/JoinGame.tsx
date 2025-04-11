@@ -52,10 +52,22 @@ const JoinGame = () => {
                 <label htmlFor="nb_players">Code de la partie</label>
                 <input className="input-field" type="text" name="gameId" id="gameId"
                        value={gameCode}
-                       onChange={(e) => setGameCode(e.target.value)}
+                       onChange={
+                            (e) => {
+                                const value = e.target.value.toUpperCase(); // Majuscules auto
+                                if (/^[A-Z0-9]{0,6}$/.test(value)) {
+                                    setGameCode(value);
+                                }
+                            }
+                       }
+                       onPaste={(e) => {
+                           let paste = e.clipboardData.getData('text').toUpperCase();
+                           paste = paste.slice(0, 6);
+                           if (!/^[A-Z0-9]{0,6}$/.test(paste)) {
+                               e.preventDefault();
+                           }
+                       }}
                        placeholder="ABCDEF"
-                       min={2}
-                       max={10}
                 />
                 <button className="btn btn-primary" type="submit">Rejoindre une partie</button>
             </form>
