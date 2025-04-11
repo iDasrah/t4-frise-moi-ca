@@ -1,5 +1,3 @@
-import Card from "./Card.tsx";
-import { CardData, CardSide } from "../types.ts";
 
 interface PickProps {
     //cardsData: Omit<CardData, "date">|null;
