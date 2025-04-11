@@ -9,11 +9,13 @@ const WaitingRoom = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [user, setUser] = useState<User>({ id: "", name: "", gameCode: "", isHost: false, isActive: false, points: 0 });
     const [game, setGame] = useState<Game>({ code: "", hasStarted: false, maxPlayers: 0, minPoints: 0 });
+    const [message, setMessage] = useState<string | null>(null);
     const navigate = useNavigate();
     const socket = useContext(SocketContext);
 
     const params = useParams<{ game_code: string }>();
     const gameCode = params.game_code;
+    const gameUrl = `https://t4-frise-moi-ca.vercel.app/join-game?code=${gameCode}`;
 
     function handleStartGame() {
         socket.emit('startGame');
@@ -22,6 +24,11 @@ const WaitingRoom = () => {
     function handleLeaveGame() {
         socket.disconnect();
         navigate("/");
+    }
+
+    const handleCopyLink = () => {
+        navigator.clipboard.writeText(gameUrl);
+        setMessage("Lien copié dans le presse-papier !");
     }
 
     useEffect(() => {
@@ -101,18 +108,26 @@ const WaitingRoom = () => {
 
                 <div className="bg-gray-300 text-black p-6 rounded-lg flex flex-col justify-start items-center w-3/4">
                     <h3 className="w-full font-bold text-xl mb-3 border-black border-b-2">Invitation</h3>
+                    <div className="message">
+                        {message && (
+                            <div className="text-green-600">
+                                {message}
+                            </div>
+                        )}
+                    </div>
                     <div className="h-full flex flex-col items-center justify-center gap-4">
                         <div className="font-semibold text-center text-lg">
                             <p>Code de la partie: {gameCode}</p>
                         </div>
                         <QRCode
                             size={256}
-                            value={`https://t4-frise-moi-ca.vercel.app/join-game?code=${gameCode}`}
+                            value={gameUrl}
                             viewBox={`0 0 256 256`}
                             className="shadow-md rounded-lg"
                         />
                         <div className="font-semibold text-center text-lg">
                             <p>Scannez le QR code pour rejoindre la partie !</p>
+                            <p>Ou partagez le lien en cliquant <span className="text-blue-500 hover:text-blue-600 cursor-pointer" onClick={handleCopyLink}>ici</span></p>
                         </div>
                     </div>
                 </div>
