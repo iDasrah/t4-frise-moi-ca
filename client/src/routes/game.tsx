@@ -1,15 +1,9 @@
-import {CardData, PlayerData} from "../types.ts";
 import GameBoard from "../components/GameBoard.tsx";
 
-interface GameProps {
-    cardsData: CardData[];
-    playersData: PlayerData[];
-}
-
-const Game = ({ cardsData, playersData }: GameProps) => {
+const Game = () => {
     return (
         <div>
-            <GameBoard cardsData={cardsData} playersData={playersData} />
+            <GameBoard />
         </div>
     )
 }

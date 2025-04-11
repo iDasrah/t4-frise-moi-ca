@@ -7,7 +7,7 @@ import {socket} from "../socket.ts";
 
 const WaitingRoom = () => {
     const [users, setUsers] = useState<User[]>([]);
-    const [user, setUser] = useState<User>({ id: "", name: "", gameCode: "", isHost: false, points: 0 });
+    const [user, setUser] = useState<User>({ id: "", name: "", gameCode: "", isHost: false, isActive: false, points: 0 });
     const [game, setGame] = useState<Game>({ code: "", hasStarted: false, maxPlayers: 0 });
     const navigate = useNavigate();
 
@@ -101,7 +101,7 @@ const WaitingRoom = () => {
                     </div>
                     <QRCode
                         size={256}
-                        value={gameCode || ""}
+                        value={`https://t4-frise-moi-ca.vercel.app//join-game?code=${gameCode}`}
                         viewBox={`0 0 256 256`}
                     />
                     <div className="italic font-semibold pt-4 text-center text-lg">

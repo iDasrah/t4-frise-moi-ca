@@ -75,4 +75,13 @@ export function pickCard(gameCode: string) {
         ...GamesUtilsState.gamesUtils.filter(game => game.gameCode !== gameCode),
         {...gameUtils, activeCard: card, deck: gameUtils.deck.slice(1)}
     ]);
+    return card;
+}
+
+export function getCardsAroundActive(gameCode: string, index: number) {
+    const gameUtils = getOne(gameCode);
+    if (!gameUtils) return undefined;
+    const leftCard = index > 0 ? gameUtils.timeline[index - 1] : undefined;
+    const rightCard = index < gameUtils.timeline.length - 1 ? gameUtils.timeline[index + 1] : undefined;
+    return { leftCard, rightCard };
 }
