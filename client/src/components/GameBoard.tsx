@@ -2,7 +2,7 @@ import {useContext, useEffect, useState} from "react";
 import {DndContext, DragEndEvent} from "@dnd-kit/core";
 import Pick from "./Pick";
 import Timeline from "./Timeline";
-import {CardData, User} from "../types";
+import {CardData, Game, User} from "../types";
 import {Link, useNavigate} from "react-router";
 import Player from "./Player.tsx";
 import {
@@ -15,6 +15,7 @@ const GameBoard = () => {
     const [cards, setCards] = useState<(CardData|Omit<CardData, "date">)[]>([]);
     const [isDragging, setIsDragging] = useState(false);
     const [user, setUser] = useState<User>({ id: "", name: "", gameCode: "", isHost: false, isActive: false, points: 0 });
+    const [game, setGame] = useState<Game>({ code: "", hasStarted: false, maxPlayers: 0, minPoints: 0 });
     const navigate = useNavigate();
     const socket = useContext(SocketContext);
 
@@ -58,6 +59,8 @@ const GameBoard = () => {
     useEffect(() => {
         socket.emit("user");
 
+        socket.emit("game");
+
         socket.emit("cardsTimeline");
 
         socket.on("pickCard", (card: Omit<CardData, "date">) => {
@@ -72,9 +75,12 @@ const GameBoard = () => {
             navigate("/end");
         });
 
-        socket.on("user", (user: User) => {
-            console.log(user);
-            setUser(user);
+        socket.on("user", (socketUser: User) => {
+            setUser(socketUser);
+        });
+
+        socket.on("game", (socketGame: Game) => {
+            setGame(socketGame);
         });
 
         socket.on("usersInGame", (users: User[]) => {
@@ -100,7 +106,7 @@ const GameBoard = () => {
                 />
 
                 <div className="flex gap-5">
-                    <Player user={user} card={pickedCard} />
+                    <Player user={user} card={pickedCard} game={game} />
                     <Pick onPick={handlePick} />
                 </div>
 

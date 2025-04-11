@@ -1,10 +1,11 @@
 import {GamesState} from "../types";
 import * as user from './user';
 
-export function activate(code: string, maxPlayers: number) {
+export function activate(code: string, maxPlayers: number, minPoints: number) {
     const game = {
         code,
         maxPlayers,
+        minPoints,
         hasStarted: false
     };
     GamesState.setGames([
@@ -65,15 +66,19 @@ export function setNextActiveUser(code: string) {
 export function isGameEnded(code: string) {
     const game = getOne(code);
     if (game) {
-        return game.hasStarted && user.getAllInGame(code).find(user => user.points >= 7) !== undefined;
+        return game.hasStarted && user.getAllInGame(code).find(user => user.points >= game.minPoints) !== undefined;
     }
     return false;
 }
 
-export function getWinner(code: string) {
+export function getPodium(code: string) {
     const game = getOne(code);
     if (game) {
-        return user.getAllInGame(code).find(user => user.points >= 7);
+        const users = user.getAllInGame(code);
+        return users.sort((a, b) => b.points - a.points).slice(0, 3).map(user => ({
+            name: user.name,
+            points: user.points
+        }));
     }
     return null;
 }

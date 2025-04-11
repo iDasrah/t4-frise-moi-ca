@@ -77,7 +77,7 @@ io.on('connection', socket => {
     io.to(gameCode).emit('usersInGame', user.getAllInGame(gameCode));
   })
 
-  socket.on('createGame', async ({ username, maxPlayers }: { username: string, maxPlayers: number }) => {
+  socket.on('createGame', async ({ username, maxPlayers, minPoints }: { username: string, maxPlayers: number, minPoints: number }) => {
     let gameCode: string;
 
     while (true) {
@@ -104,7 +104,23 @@ io.on('connection', socket => {
       return;
     }
 
-    game.activate(gameCode, maxPlayers);
+    if (minPoints > 15) {
+      socket.emit('createGame', {
+        error: true,
+        message: 'Too many points. Maximum is 15'
+      });
+      return;
+    }
+
+    if (minPoints < 5) {
+      socket.emit('createGame', {
+        error: true,
+        message: 'Too few points. Minimum is 5'
+      });
+      return;
+    }
+
+    game.activate(gameCode, maxPlayers, minPoints);
     user.activate(socket.id, username, gameCode, true);
     socket.join(gameCode);
 
@@ -185,7 +201,6 @@ io.on('connection', socket => {
     gamesUtils.moveActiveCardInTimeline(existingUser.gameCode);
     if (isGameEnded(existingUser.gameCode)) {
       io.to(existingUser.gameCode).emit('endGame');
-      game.deleteOne(existingUser.gameCode);
       return;
     }
     game.setNextActiveUser(existingUser.gameCode);
@@ -216,14 +231,14 @@ io.on('connection', socket => {
     socket.emit('pickCard', gamesUtils.pickCard(existingUser.gameCode));
   })
 
-  socket.on('winner', () => {
+  socket.on('podium', () => {
     const existingUser = user.getOne(socket.id);
     if (!existingUser) return;
 
-    const winner = game.getWinner(existingUser.gameCode);
-    if (!winner) return;
+    const podium = game.getPodium(existingUser.gameCode);
+    if (!podium) return;
 
-    socket.emit('winner', winner);
+    socket.emit('podium', podium);
   })
 
   socket.on('usersInGame', () => {

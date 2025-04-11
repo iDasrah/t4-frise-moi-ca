@@ -25,6 +25,7 @@ export type Game = {
     code: string;
     hasStarted: boolean;
     maxPlayers: number;
+    minPoints: number;
 }
 
 export type Card = {
