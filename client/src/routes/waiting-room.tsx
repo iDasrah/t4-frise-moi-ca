@@ -1,15 +1,16 @@
 import QRCode from "react-qr-code";
 import {useNavigate, useParams} from "react-router";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {User, Game} from "../types.ts";
 import {Crown} from "lucide-react";
-import {socket} from "../socket.ts";
+import {SocketContext} from "../components/SocketContext.tsx";
 
 const WaitingRoom = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [user, setUser] = useState<User>({ id: "", name: "", gameCode: "", isHost: false, isActive: false, points: 0 });
     const [game, setGame] = useState<Game>({ code: "", hasStarted: false, maxPlayers: 0 });
     const navigate = useNavigate();
+    const socket = useContext(SocketContext);
 
     const params = useParams<{ game_code: string }>();
     const gameCode = params.game_code;

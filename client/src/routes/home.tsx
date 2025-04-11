@@ -1,10 +1,8 @@
 import {Link, Outlet} from "react-router";
-import {socket} from "../socket.ts";
 import {useState} from "react";
 
 const Home = () => {
     const [isBtnClicked, setIsBtnClicked] = useState(false);
-    socket.connect();
 
     return (
         <>

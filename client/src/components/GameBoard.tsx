@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {DndContext, DragEndEvent} from "@dnd-kit/core";
 import Pick from "./Pick";
 import Timeline from "./Timeline";
@@ -9,7 +9,7 @@ import Player from "./Player.tsx";
 import {
     restrictToWindowEdges
 } from "@dnd-kit/modifiers";
-import {socket} from "../socket.ts";
+import {SocketContext} from "./SocketContext.tsx";
 
 const GameBoard = () => {
     const [pickedCard, setPickedCard] = useState<Omit<CardData, "date"> | null>(null);
@@ -17,6 +17,7 @@ const GameBoard = () => {
     const [isDragging, setIsDragging] = useState(false);
     const [user, setUser] = useState<User>({ id: "", name: "", gameCode: "", isHost: false, isActive: false, points: 0 });
     const navigate = useNavigate();
+    const socket = useContext(SocketContext);
 
     const handlePick = () => {
         socket.emit("pickCard");
