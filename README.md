@@ -38,8 +38,6 @@ Il suffit simplement de se rendre sur ce lien : https://t4-frise-moi-ca.vercel.a
 
 ## Cahier des charges
 
-Pour un exemple de ce qui est attendu, voir https://gitlab.unistra.fr/T234/t4-exemple
-
 ### Objectifs pédagogiques
 
 ##### Comprendre l’évolution des services publics
@@ -85,6 +83,7 @@ Chaque carte a deux faces :
 - Écran d'accueil avec choix entre créer et rejoindre une partie
 - Formulaire pour créer une partie
 - Formulaire pour rejoindre une partie
+- Écran d'attente des joueurs
 - Écran principal de jeu avec :
   - Une pioche
   - La frise chronologique du joueur actuel
@@ -136,9 +135,19 @@ Le jeu doit être responsive et fonctionner sur mobile, tablette et ordinateur.
 
 ### Contraintes de développement
 
-- Code modularisé
+- Code modularisé, qui sépare vue et modèle
 - Le code doit être documenté pour faciliter la maintenance.
 
 ### Fonctionnalités et scénarios avancés
 
-- Modes de jeu différents
+- Modes de jeu différents : 
+    - Mode solo : un joueur peut s'entraîner tout seul
+    - Mode collaboratif : Les joueurs peuvent coopérer pour construire une frise commune et atteindre un objectif collectif.
+    - Mode contre-la-montre : Les joueurs doivent placer correctement le plus de cartes possibles dans un temps imparti
+
+- Personnalisation : 
+    - Les joueurs peuvent créer et ajouter leurs propres cartes historiques.
+
+- Statistiques : 
+  - Un tableau des scores en ligne pour comparer les performances des joueurs.
+  - Débloquer des badges ou des succès en fonction des performances ou des actions spécifiques.
