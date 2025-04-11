@@ -3,7 +3,7 @@ const BackCard = () => {
         <div
             className="card back w-full h-full rounded-lg overflow-hidden cursor-pointer"
         >
-            <div className="card-header">Frise-moi ça !</div>
+            <div className="card-header h-10"></div>
             <hr className="border-3 border-cream2 w-full"></hr>
 
             <div className="w-full h-full ">
